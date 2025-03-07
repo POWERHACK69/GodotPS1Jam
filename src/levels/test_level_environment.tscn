@@ -1,0 +1,511 @@
+[gd_scene load_steps=21 format=3 uid="uid://qv6gslpcfxqi"]
+
+[ext_resource type="Texture2D" uid="uid://crkfx5a6aeenf" path="res://assets/models/environment/barrier/ps1-barrier_BaseColor.png" id="1_od3x2"]
+[ext_resource type="ArrayMesh" uid="uid://klyye04gxyat" path="res://assets/models/environment/barrier/Barrier.res" id="2_oakjb"]
+[ext_resource type="ArrayMesh" uid="uid://beoe34ig2du4" path="res://assets/models/environment/bumper_angled/BumperAngled.res" id="3_gtpsj"]
+[ext_resource type="ArrayMesh" uid="uid://dptr1onp3elj6" path="res://assets/models/environment/bumper_horizontal/BumperHorizontal.res" id="4_uaiev"]
+[ext_resource type="Texture2D" uid="uid://dsdvih1j6odrc" path="res://assets/models/environment/floor_gratiing/ps1-floor_grating_BaseColor.png" id="5_5wgmp"]
+[ext_resource type="ArrayMesh" uid="uid://cpn0bvbvbxjbm" path="res://assets/models/environment/floor_gratiing/Floor.res" id="6_clpdb"]
+[ext_resource type="ArrayMesh" uid="uid://r00dil1uqvf2" path="res://assets/models/environment/floor_grating_triangle/FloorTriangle.res" id="7_awakw"]
+[ext_resource type="ArrayMesh" uid="uid://io5pllw21t1t" path="res://assets/models/environment/wall/Wall.res" id="8_tw1w1"]
+[ext_resource type="Texture2D" uid="uid://wnfc1i7vx674" path="res://assets/models/environment/wall_panel/ps1-panel_BaseColor.png" id="9_qmvc8"]
+[ext_resource type="ArrayMesh" uid="uid://d3fyo5isioi0e" path="res://assets/models/environment/wall_panel/WallPanel.res" id="10_j7fs4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rs6d0"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_1ky7t"]
+sky_material = SubResource("ProceduralSkyMaterial_rs6d0")
+
+[sub_resource type="Environment" id="Environment_6o3kl"]
+background_mode = 2
+sky = SubResource("Sky_1ky7t")
+tonemap_mode = 4
+tonemap_exposure = 1.4
+glow_enabled = true
+fog_enabled = true
+fog_density = 0.001
+fog_aerial_perspective = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qc03e"]
+shading_mode = 2
+albedo_texture = ExtResource("1_od3x2")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1mav3"]
+shading_mode = 2
+albedo_texture = ExtResource("1_od3x2")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45v6v"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.8, 0.639216, 0.321569, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43bbr"]
+shading_mode = 2
+albedo_texture = ExtResource("5_5wgmp")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tximp"]
+shading_mode = 2
+albedo_texture = ExtResource("5_5wgmp")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cp8bs"]
+shading_mode = 2
+albedo_texture = ExtResource("9_qmvc8")
+texture_filter = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jeyf7"]
+shading_mode = 2
+albedo_texture = ExtResource("9_qmvc8")
+texture_filter = 2
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6o3kl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="FlatShading" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="FlatShading"]
+transform = Transform3D(-0.627934, -0.177029, 0.757865, 0, 0.973786, 0.227465, -0.778267, 0.142833, -0.611473, 5.34985, 2.00501, -3.28228)
+fov = 65.0
+
+[node name="Barrier" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, -0.8, 2)
+material_override = SubResource("StandardMaterial3D_qc03e")
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier2" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, -0.8, 0)
+material_override = SubResource("StandardMaterial3D_1mav3")
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier4" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.8, 6)
+material_override = SubResource("StandardMaterial3D_1mav3")
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier5" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.8, 8)
+material_override = SubResource("StandardMaterial3D_1mav3")
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier6" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.8, 10)
+material_override = SubResource("StandardMaterial3D_1mav3")
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier7" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.8, 12)
+material_override = SubResource("StandardMaterial3D_1mav3")
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier3" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-1.07124, 0, 1.07124, 0, 1, 0, -1.07124, 0, -1.07124, 1, -0.8, -2)
+material_override = SubResource("StandardMaterial3D_1mav3")
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier8" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1.07124, 0, 1.07124, 0, 1, 0, -1.07124, 0, 1.07124, 1, -0.8, 4)
+material_override = SubResource("StandardMaterial3D_1mav3")
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="BumperAngled" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.74228e-08, -1, 3.82137e-15, 1, 8.74228e-08, 4.37114e-08, -1.8, 0.6, 10)
+material_override = SubResource("StandardMaterial3D_45v6v")
+mesh = ExtResource("3_gtpsj")
+skeleton = NodePath("../..")
+
+[node name="BumperAngled2" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(4.37114e-08, 0, 1, -8.74228e-08, -1, 3.82137e-15, -1, 8.74228e-08, 4.37114e-08, -1.8, 0.6, 6)
+material_override = SubResource("StandardMaterial3D_45v6v")
+mesh = ExtResource("3_gtpsj")
+skeleton = NodePath("../..")
+
+[node name="BumperHorizontal" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.74228e-08, -1, 3.82137e-15, 1, 8.74228e-08, 4.37114e-08, -1.8, 0.479707, 8)
+material_override = SubResource("StandardMaterial3D_45v6v")
+mesh = ExtResource("4_uaiev")
+skeleton = NodePath("../..")
+
+[node name="BumperHorizontal2" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.74228e-08, -1, 3.82137e-15, 1, 8.74228e-08, 4.37114e-08, -1.8, 0.679707, 12)
+material_override = SubResource("StandardMaterial3D_45v6v")
+mesh = ExtResource("4_uaiev")
+skeleton = NodePath("../..")
+
+[node name="Floor" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+material_override = SubResource("StandardMaterial3D_43bbr")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor2" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor3" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor5" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor6" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor4" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor7" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor8" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 8)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor9" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 10)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor10" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 12)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="FloorTriangle" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, -2)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("7_awakw")
+skeleton = NodePath("../..")
+
+[node name="FloorTriangle2" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+material_override = SubResource("StandardMaterial3D_tximp")
+mesh = ExtResource("7_awakw")
+skeleton = NodePath("../..")
+
+[node name="Wall" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 6)
+visible = false
+mesh = ExtResource("8_tw1w1")
+skeleton = NodePath("../..")
+
+[node name="Wall2" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 8)
+visible = false
+mesh = ExtResource("8_tw1w1")
+skeleton = NodePath("../..")
+
+[node name="Wall3" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 10)
+visible = false
+mesh = ExtResource("8_tw1w1")
+skeleton = NodePath("../..")
+
+[node name="Wall4" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 12)
+visible = false
+mesh = ExtResource("8_tw1w1")
+skeleton = NodePath("../..")
+
+[node name="WallPanel" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, -2)
+material_override = SubResource("StandardMaterial3D_cp8bs")
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel2" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 0)
+material_override = SubResource("StandardMaterial3D_jeyf7")
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel3" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 2)
+material_override = SubResource("StandardMaterial3D_jeyf7")
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel4" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 4)
+material_override = SubResource("StandardMaterial3D_jeyf7")
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel5" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 6)
+material_override = SubResource("StandardMaterial3D_jeyf7")
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel6" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 8)
+material_override = SubResource("StandardMaterial3D_jeyf7")
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel7" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 10)
+material_override = SubResource("StandardMaterial3D_jeyf7")
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel8" type="MeshInstance3D" parent="FlatShading"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 12)
+material_override = SubResource("StandardMaterial3D_jeyf7")
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(1, 0.59, 0.59, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="FlatShading"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+shadow_enabled = true
+
+[node name="PBR" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
+
+[node name="Camera3D" type="Camera3D" parent="PBR"]
+transform = Transform3D(-0.627934, -0.177029, 0.757865, 0, 0.973786, 0.227465, -0.778267, 0.142833, -0.611473, 5.34985, 2.00501, -3.28228)
+fov = 65.0
+
+[node name="Barrier" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, -0.8, 2)
+material_override = SubResource("StandardMaterial3D_qc03e")
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier2" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, -0.8, 0)
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier4" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.8, 6)
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier5" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.8, 8)
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier6" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.8, 10)
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier7" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.8, 12)
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier3" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-1.07124, 0, 1.07124, 0, 1, 0, -1.07124, 0, -1.07124, 1, -0.8, -2)
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="Barrier8" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1.07124, 0, 1.07124, 0, 1, 0, -1.07124, 0, 1.07124, 1, -0.8, 4)
+mesh = ExtResource("2_oakjb")
+skeleton = NodePath("../..")
+
+[node name="BumperAngled" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.74228e-08, -1, 3.82137e-15, 1, 8.74228e-08, 4.37114e-08, -1.8, 0.6, 10)
+material_override = SubResource("StandardMaterial3D_45v6v")
+mesh = ExtResource("3_gtpsj")
+skeleton = NodePath("../..")
+
+[node name="BumperAngled2" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(4.37114e-08, 0, 1, -8.74228e-08, -1, 3.82137e-15, -1, 8.74228e-08, 4.37114e-08, -1.8, 0.6, 6)
+material_override = SubResource("StandardMaterial3D_45v6v")
+mesh = ExtResource("3_gtpsj")
+skeleton = NodePath("../..")
+
+[node name="BumperHorizontal" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.74228e-08, -1, 3.82137e-15, 1, 8.74228e-08, 4.37114e-08, -1.8, 0.479707, 8)
+material_override = SubResource("StandardMaterial3D_45v6v")
+mesh = ExtResource("4_uaiev")
+skeleton = NodePath("../..")
+
+[node name="BumperHorizontal2" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 8.74228e-08, -1, 3.82137e-15, 1, 8.74228e-08, 4.37114e-08, -1.8, 0.679707, 12)
+material_override = SubResource("StandardMaterial3D_45v6v")
+mesh = ExtResource("4_uaiev")
+skeleton = NodePath("../..")
+
+[node name="Floor" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor2" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor3" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor5" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor6" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor4" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor7" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 6)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor8" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 8)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor9" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 10)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="Floor10" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 12)
+mesh = ExtResource("6_clpdb")
+skeleton = NodePath("../..")
+
+[node name="FloorTriangle" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, -2)
+mesh = ExtResource("7_awakw")
+skeleton = NodePath("../..")
+
+[node name="FloorTriangle2" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+mesh = ExtResource("7_awakw")
+skeleton = NodePath("../..")
+
+[node name="Wall" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 6)
+visible = false
+mesh = ExtResource("8_tw1w1")
+skeleton = NodePath("../..")
+
+[node name="Wall2" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 8)
+visible = false
+mesh = ExtResource("8_tw1w1")
+skeleton = NodePath("../..")
+
+[node name="Wall3" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 10)
+visible = false
+mesh = ExtResource("8_tw1w1")
+skeleton = NodePath("../..")
+
+[node name="Wall4" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 12)
+visible = false
+mesh = ExtResource("8_tw1w1")
+skeleton = NodePath("../..")
+
+[node name="WallPanel" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, -2)
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel2" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 0)
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel3" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 2)
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel4" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 4)
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel5" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 6)
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel6" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 8)
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel7" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 10)
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="WallPanel8" type="MeshInstance3D" parent="PBR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 1, 12)
+mesh = ExtResource("10_j7fs4")
+skeleton = NodePath("../..")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(1, 0.59, 0.59, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="PBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 6)
+shadow_enabled = true
