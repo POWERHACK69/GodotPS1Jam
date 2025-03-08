@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3jg0pxwagv8n"]
+[gd_scene load_steps=14 format=3 uid="uid://b3jg0pxwagv8n"]
 
 [ext_resource type="PackedScene" uid="uid://bnfdmupamtp3n" path="res://assets/models/environment/floor_gratiing/floor_grating.tscn" id="1_cagvy"]
 [ext_resource type="PackedScene" uid="uid://7sfjw6k8q1k3" path="res://assets/models/environment/wall_panel/wall_panel.tscn" id="2_qif8t"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://p0ribrwxq0lj" path="res://assets/models/environment/barrier/barrier.tscn" id="4_qif8t"]
 [ext_resource type="PackedScene" uid="uid://dqg0has5yml3g" path="res://assets/models/environment/bumper_horizontal/bumper_horizontal.tscn" id="5_ltr1g"]
 [ext_resource type="PackedScene" uid="uid://bo0uvp5d70piu" path="res://assets/models/environment/bumper_angled/bumper_angled.tscn" id="6_fqk1o"]
+[ext_resource type="PackedScene" uid="uid://d0v6l6lpqckgm" path="res://src/camera_area.tscn" id="7_dhkdp"]
+[ext_resource type="Script" uid="uid://dinle0x3fchju" path="res://scripts/camera_manager.gd" id="8_8bpti"]
+[ext_resource type="PackedScene" uid="uid://bgo3kuxpednsm" path="res://src/chars/player.tscn" id="8_do65p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a11jm"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -26,6 +29,9 @@ glow_enabled = true
 fog_enabled = true
 fog_density = 0.001
 fog_aerial_perspective = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8bpti"]
+size = Vector3(3.98071, 5.2832, 6.62244)
 
 [node name="Test_Level_PSX" type="Node3D"]
 
@@ -265,5 +271,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.4, -0.4)
 light_color = Color(1, 0.8775, 0.51, 1)
 light_energy = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.573576, -0.26669, 0.774524, 7.45058e-09, 0.945519, 0.325568, -0.819152, -0.186738, 0.542327, 3.71219, 1.54285, 3.37903)
+[node name="Player" parent="." instance=ExtResource("8_do65p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 8)
+
+[node name="CameraManager" type="Node3D" parent="." node_paths=PackedStringArray("player_node")]
+script = ExtResource("8_8bpti")
+player_node = NodePath("../Player")
+
+[node name="Camera4" type="Camera3D" parent="CameraManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 4)
+
+[node name="CameraArea3" parent="CameraManager/Camera4" instance=ExtResource("7_dhkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7551, 1, 1.03969)
+top_level = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera4/CameraArea3"]
+shape = SubResource("BoxShape3D_8bpti")
+
+[node name="Camera5" type="Camera3D" parent="CameraManager"]
+transform = Transform3D(-0.729167, 0.399638, -0.555523, 0.0452333, 0.838139, 0.543578, 0.68284, 0.371231, -0.62922, -6.7, 2, 0.7)
+
+[node name="CameraArea3" parent="CameraManager/Camera5" instance=ExtResource("7_dhkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7551, 1, 1.03969)
+top_level = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera5/CameraArea3"]
+shape = SubResource("BoxShape3D_8bpti")
