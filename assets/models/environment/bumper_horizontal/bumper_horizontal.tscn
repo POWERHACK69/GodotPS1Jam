@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqg0has5yml3g"]
+
+[ext_resource type="ArrayMesh" uid="uid://dptr1onp3elj6" path="res://assets/models/environment/bumper_horizontal/BumperHorizontal.res" id="1_hc012"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_deryu"]
+size = Vector3(2, 0.4, 0.1)
+
+[node name="BumperHorizontal" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+shape = SubResource("BoxShape3D_deryu")
+
+[node name="BumperHorizontal" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+mesh = ExtResource("1_hc012")

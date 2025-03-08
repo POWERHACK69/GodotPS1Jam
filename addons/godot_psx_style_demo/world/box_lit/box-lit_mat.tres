@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://duageqxj0x4k1"]
+
+[ext_resource type="Shader" uid="uid://be8ldcl6osvtp" path="res://addons/godot_psx_style_demo/shaders/psx_lit.gdshader" id="1_jfxfi"]
+[ext_resource type="Texture2D" uid="uid://dsdvih1j6odrc" path="res://assets/models/environment/floor_gratiing/ps1-floor_grating_BaseColor.png" id="2_7ap0i"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jfxfi")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_7ap0i")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)

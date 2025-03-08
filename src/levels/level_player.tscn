@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj8soy4ovh1b7"]
+
+[ext_resource type="Material" uid="uid://b6irksunrvdek" path="res://addons/godot_psx_style_demo/post_process/blur-post-process_mat.tres" id="1_okn5v"]
+[ext_resource type="Material" uid="uid://bni0eo5gi5ho4" path="res://addons/godot_psx_style_demo/post_process/lcd-overlay_mat.tres" id="2_q5bma"]
+[ext_resource type="Shader" uid="uid://ciwafriwxiod1" path="res://addons/godot_psx_style_demo/shaders/pp_band-dither.gdshader" id="3_7741x"]
+[ext_resource type="Texture2D" uid="uid://b0ub3tqjyw46f" path="res://addons/godot_psx_style_demo/shaders/psxdither.png" id="4_lxrfm"]
+[ext_resource type="PackedScene" uid="uid://b3jg0pxwagv8n" path="res://src/levels/test_level_psx.tscn" id="5_okn5v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7yb2"]
+shader = ExtResource("3_7741x")
+shader_parameter/dither_tex = ExtResource("4_lxrfm")
+shader_parameter/col_depth = 15.0
+shader_parameter/dither_banding = true
+
+[node name="TestLevelPlayer" type="Node3D"]
+
+[node name="PSXLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="BlurPostProcess" type="SubViewportContainer" parent="PSXLayer"]
+material = ExtResource("1_okn5v")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Viewport" type="SubViewport" parent="PSXLayer/BlurPostProcess"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(960, 720)
+render_target_update_mode = 4
+
+[node name="LCDOverlay" type="SubViewportContainer" parent="PSXLayer/BlurPostProcess/Viewport"]
+material = ExtResource("2_q5bma")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch = true
+
+[node name="Viewport" type="SubViewport" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(960, 720)
+render_target_update_mode = 4
+
+[node name="DitherBanding" type="SubViewportContainer" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport"]
+material = SubResource("ShaderMaterial_n7yb2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+stretch = true
+stretch_shrink = 3
+
+[node name="Viewport" type="SubViewport" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(320, 240)
+render_target_update_mode = 4
+
+[node name="Test_Level_PSX" parent="PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport" instance=ExtResource("5_okn5v")]

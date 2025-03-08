@@ -1,8 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://5rp7qfkcr2th"]
+[gd_scene load_steps=18 format=3 uid="uid://ea8s23okewmg"]
 
 [ext_resource type="Script" uid="uid://dinle0x3fchju" path="res://scripts/camera_manager.gd" id="1_vtqyn"]
 [ext_resource type="PackedScene" uid="uid://bgo3kuxpednsm" path="res://src/chars/player.tscn" id="2_i3fts"]
-[ext_resource type="PackedScene" uid="uid://bu2mxi0d37mo8" path="res://src/camera_area.tscn" id="2_rtguk"]
+[ext_resource type="PackedScene" uid="uid://d0v6l6lpqckgm" path="res://src/camera_area.tscn" id="2_rtguk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vtqyn"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

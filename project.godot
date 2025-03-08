@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="GodotPS1Jam"
+run/main_scene="uid://bj8soy4ovh1b7"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,7 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=640
 window/size/viewport_height=480
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [input]
 
@@ -55,5 +56,20 @@ interact={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+shading/overrides/force_vertex_shading=true
+shading/overrides/force_lambert_over_burley=true
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/default_filters/anisotropic_filtering_level=0
+textures/decals/filter=2
+textures/light_projectors/filter=2
+environment/subsurface_scattering/subsurface_scattering_quality=0
+
+[shader_globals]
+
+precision_multiplier={
+"type": "float",
+"value": 0.5
+}
