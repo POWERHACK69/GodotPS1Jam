@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://p0ribrwxq0lj"]
+
+[ext_resource type="ArrayMesh" uid="uid://klyye04gxyat" path="res://assets/models/environment/barrier/Barrier.res" id="1_qi4id"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kar1i"]
+size = Vector3(2, 2, 0.3)
+
+[node name="Barrier" type="StaticBody3D"]
+
+[node name="Barrier" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.05)
+mesh = ExtResource("1_qi4id")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
+shape = SubResource("BoxShape3D_kar1i")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo0uvp5d70piu"]
+
+[ext_resource type="ArrayMesh" uid="uid://beoe34ig2du4" path="res://assets/models/environment/bumper_angled/BumperAngled.res" id="1_6kykb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nrgwn"]
+size = Vector3(2, 0.6, 0.1)
+
+[node name="BumperAngled" type="StaticBody3D"]
+
+[node name="BumperAngled" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+mesh = ExtResource("1_6kykb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+shape = SubResource("BoxShape3D_nrgwn")

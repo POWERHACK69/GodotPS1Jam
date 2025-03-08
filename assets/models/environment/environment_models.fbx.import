@@ -36,11 +36,11 @@ _subresources={
 "materials": {
 "defaultPolygonShader1": {
 "use_external/enabled": true,
-"use_external/path": "uid://tf0n631g2e74"
+"use_external/path": "uid://bpik37j5k5qf2"
 },
 "standardSurface1": {
 "use_external/enabled": true,
-"use_external/path": "uid://cjprasdrdn0gw"
+"use_external/path": "uid://bpik37j5k5qf2"
 }
 },
 "meshes": {
