@@ -26,3 +26,9 @@ func _process(delta):
 		rotate_y(rotate_speed * delta)
 	if Input.is_action_pressed("right"):
 		rotate_y(-rotate_speed * delta)
+
+	if Input.is_action_just_pressed("interact"):
+		if $Area3D/CollisionShape3D.disabled == true:
+			$Area3D/CollisionShape3D.disabled = false
+			await get_tree().create_timer(0.2).timeout
+			$Area3D/CollisionShape3D.disabled = true
