@@ -3,7 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://klyye04gxyat" path="res://assets/models/environment/barrier/Barrier.res" id="1_qi4id"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kar1i"]
-size = Vector3(2, 2, 0.3)
+size = Vector3(2, 2.2, 0.3)
 
 [node name="Barrier" type="StaticBody3D"]
 

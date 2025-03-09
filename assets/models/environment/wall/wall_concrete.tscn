@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dpuw0fj3g1e1l"]
+
+[ext_resource type="Shader" uid="uid://be8ldcl6osvtp" path="res://addons/godot_psx_style_demo/shaders/psx_lit.gdshader" id="1_qn6js"]
+[ext_resource type="Texture2D" uid="uid://du0qov1h2uyws" path="res://assets/models/environment/wall/5x5_lambert1_BaseColor.png" id="2_ks47s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kvhxb"]
+size = Vector3(4, 4, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5k4t"]
+render_priority = 0
+shader = ExtResource("1_qn6js")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_ks47s")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_kvhxb"]
+size = Vector2(4, 4.4)
+subdivide_width = 1
+subdivide_depth = 1
+
+[node name="WallConcrete" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.05)
+shape = SubResource("BoxShape3D_kvhxb")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = SubResource("ShaderMaterial_l5k4t")
+mesh = SubResource("QuadMesh_kvhxb")

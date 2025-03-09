@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://gkrmmgdpyjwx"]
+
+[ext_resource type="Shader" uid="uid://be8ldcl6osvtp" path="res://addons/godot_psx_style_demo/shaders/psx_lit.gdshader" id="1_q07ih"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7pa1n"]
+size = Vector3(0.2, 8, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sobwu"]
+render_priority = 0
+shader = ExtResource("1_q07ih")
+shader_parameter/modulate_color = Color(0.243137, 0.239216, 0.223529, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q07ih"]
+size = Vector3(0.1, 8, 0.1)
+
+[node name="Pillar" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+shape = SubResource("BoxShape3D_7pa1n")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 4, 0)
+material_override = SubResource("ShaderMaterial_sobwu")
+mesh = SubResource("BoxMesh_q07ih")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 4, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_sobwu")
+mesh = SubResource("BoxMesh_q07ih")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 4, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_sobwu")
+mesh = SubResource("BoxMesh_q07ih")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -0.2)
+visible = false
+material_override = SubResource("ShaderMaterial_sobwu")
+mesh = SubResource("BoxMesh_q07ih")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.2)
+visible = false
+material_override = SubResource("ShaderMaterial_sobwu")
+mesh = SubResource("BoxMesh_q07ih")
