@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://ea8s23okewmg"]
+[gd_scene load_steps=19 format=3 uid="uid://ea8s23okewmg"]
 
 [ext_resource type="Script" uid="uid://dinle0x3fchju" path="res://scripts/camera_manager.gd" id="1_vtqyn"]
 [ext_resource type="PackedScene" uid="uid://bgo3kuxpednsm" path="res://src/chars/player.tscn" id="2_i3fts"]
 [ext_resource type="PackedScene" uid="uid://d0v6l6lpqckgm" path="res://src/camera_area.tscn" id="2_rtguk"]
+[ext_resource type="PackedScene" uid="uid://cimvcdwoi2wxr" path="res://src/ui/pause_menu.tscn" id="4_mj674"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vtqyn"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -387,3 +388,6 @@ shape = SubResource("BoxShape3D_w1gjv")
 
 [node name="Player" parent="." instance=ExtResource("2_i3fts")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6017, 2.20062, 15.4152)
+
+[node name="PauseMenu" parent="." instance=ExtResource("4_mj674")]
+visible = false
