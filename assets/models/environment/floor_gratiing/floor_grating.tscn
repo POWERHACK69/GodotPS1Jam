@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnfdmupamtp3n"]
+[gd_scene load_steps=4 format=3 uid="uid://bnfdmupamtp3n"]
 
-[ext_resource type="ArrayMesh" uid="uid://cpn0bvbvbxjbm" path="res://assets/models/environment/floor_gratiing/Floor.res" id="1_xe4pl"]
+[ext_resource type="Material" uid="uid://bpik37j5k5qf2" path="res://assets/models/environment/floor_gratiing/floor_grating.material" id="1_xe4pl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sjl0m"]
+size = Vector2(4, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjl0m"]
-size = Vector3(2, 0.1, 2)
+size = Vector3(4, 0.1, 4)
 
 [node name="FloorGrating" type="StaticBody3D"]
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_xe4pl")
+material_override = ExtResource("1_xe4pl")
+mesh = SubResource("PlaneMesh_sjl0m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)

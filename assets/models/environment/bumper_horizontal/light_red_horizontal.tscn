@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqg0has5yml3g"]
+
+[ext_resource type="ArrayMesh" uid="uid://dptr1onp3elj6" path="res://assets/models/environment/bumper_horizontal/BumperHorizontal.res" id="1_hc012"]
+
+[node name="BumperHorizontal" type="Node3D"]
+
+[node name="BumperHorizontal" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+mesh = ExtResource("1_hc012")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00525284, 0.267622, 0.3)
+light_color = Color(1, 0.5695, 0.37, 1)

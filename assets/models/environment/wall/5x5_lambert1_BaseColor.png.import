@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boai4e3uyxipp"
-path.s3tc="res://.godot/imported/ps1-barrier_Normal.png-e52e4e4e5326c8198b42ae3492ebc92e.s3tc.ctex"
+uid="uid://du0qov1h2uyws"
+path.s3tc="res://.godot/imported/5x5_lambert1_BaseColor.png-badfa2f4fb651d2277a2dbbaa9635ede.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/models/environment/barrier/ps1-barrier_Normal.png"
-dest_files=["res://.godot/imported/ps1-barrier_Normal.png-e52e4e4e5326c8198b42ae3492ebc92e.s3tc.ctex"]
+source_file="res://assets/models/environment/wall/5x5_lambert1_BaseColor.png"
+dest_files=["res://.godot/imported/5x5_lambert1_BaseColor.png-badfa2f4fb651d2277a2dbbaa9635ede.s3tc.ctex"]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/models/environment/barrier/ps1-barrier_Normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

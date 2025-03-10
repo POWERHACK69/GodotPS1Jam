@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://brmu4677qhpsi"]
+
+[ext_resource type="Shader" uid="uid://be8ldcl6osvtp" path="res://addons/godot_psx_style_demo/shaders/psx_lit.gdshader" id="1_x6soy"]
+[ext_resource type="Texture2D" uid="uid://lq7r14p5u73o" path="res://assets/models/player/A_ps1-hackerman.png" id="2_ksgxd"]
+[ext_resource type="ArrayMesh" uid="uid://dhxe2fnv3qkil" path="res://assets/models/player/Hackerman.res" id="3_uyv81"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bj0j"]
+render_priority = 0
+shader = ExtResource("1_x6soy")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = ExtResource("2_ksgxd")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p175k"]
+emission_enabled = true
+emission = Color(1, 0.416667, 0, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_qyada"]
+size = Vector2(0.1, 0.1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Hackerman" type="MeshInstance3D" parent="."]
+transform = Transform3D(110, 0, 0, 0, 110, 0, 0, 0, 110, 0, 0.055, 0)
+material_override = SubResource("ShaderMaterial_2bj0j")
+mesh = ExtResource("3_uyv81")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0.577485, 0.0746522)
+material_override = SubResource("StandardMaterial3D_p175k")
+mesh = SubResource("QuadMesh_qyada")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.460306, 0.0219602, -0.0236988, 0.028745, -0.432886, 0.15719, -0.0147516, -0.15828, -0.433192, -0.75762, 0.74549, -0.0431495)
+material_override = SubResource("StandardMaterial3D_p175k")
+mesh = SubResource("QuadMesh_qyada")
