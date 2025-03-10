@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgo3kuxpednsm"]
+[gd_scene load_steps=7 format=3 uid="uid://bgo3kuxpednsm"]
 
 [ext_resource type="Script" uid="uid://c8xlq3w8o06a3" path="res://src/chars/player.gd" id="1_kae5y"]
 
@@ -12,6 +12,8 @@ albedo_color = Color(1, 0.258824, 0.262745, 1)
 [sub_resource type="SphereMesh" id="SphereMesh_pf7im"]
 material = SubResource("StandardMaterial3D_kae5y")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kae5y"]
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_kae5y")
 
@@ -24,3 +26,10 @@ shape = SubResource("CapsuleShape3D_kae5y")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0127003, 0.268117, 0.0675383)
 mesh = SubResource("SphereMesh_pf7im")
+
+[node name="Area3D" type="Area3D" parent="." groups=["PlayerArea"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.143845, 0.465686)
+shape = SubResource("BoxShape3D_kae5y")
+disabled = true

@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://df6al5e6ne53q"]
+
+[ext_resource type="Script" uid="uid://dqa82i4oxv51q" path="res://src/mini-games/speed_cracking/speed_cracking.gd" id="1_usfiq"]
+[ext_resource type="FontFile" uid="uid://canfy3s0xvigq" path="res://assets/fonts/whitrabt.ttf" id="2_ao05n"]
+
+[node name="SpeedCracking" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -134.5
+offset_right = 205.0
+offset_bottom = 134.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_usfiq")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.115635, 0.115635, 0.115635, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_top = 226.5
+offset_right = 410.0
+offset_bottom = 266.5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.223529, 1, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("2_ao05n")
+theme_override_font_sizes/font_size = 22
+text = "> "
+
+[node name="Label2" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.223529, 1, 0.0784314, 1)
+theme_override_fonts/font = ExtResource("2_ao05n")
+theme_override_font_sizes/font_size = 22
+text = "123456789012345678901234567890"
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(410, 23)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ao05n")
+theme_override_font_sizes/font_size = 20
+text = "Connecting to aegiscorp.net... ✅  
+Security: HIGH (Firewall, IDS, Logs)  
+Anti-trace enabled... ✅  
+"
+autowrap_mode = 3
+
+[node name="TextTimer" type="Timer" parent="ColorRect"]
+
+[node name="Timer" type="Timer" parent="."]

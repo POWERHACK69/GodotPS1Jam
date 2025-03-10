@@ -1,0 +1,35 @@
+{
+  "hacking_sequence": [
+	{
+	  "command": "connect door _panel_07 ",
+	  "response": "Establishing connection... [OK]\nDoor Lock: ACTIVE\nSecurity Level: HIGH",
+	  "time": 3.5
+	},
+	{
+	  "command": "scan security -- door ",
+	  "response": "Scanning...\nDetected: PIN Pad, Biometric Lock, Network Fail-safe",
+	  "time": 3.0
+	},
+	{
+	  "command": "spoof biometric -- admin ",
+	  "response": "Cloning admin fingerprint... [OK]\nApplying synthetic data... [OK]",
+	  "time": 2.8
+	},
+	{
+	  "command": "brute _pin -- fast ",
+	  "response": "Cracking PIN...\nAttempts: ########## \n[SUCCESS]\nCode: 8342",
+	  "time": 2.5
+	},
+	{
+	  "command": "override _lock -- force ",
+	  "response": "Bypassing network fail-safe... [OK]\nManual override engaged...",
+	  "time": 2.2
+	},
+	{
+	  "command": "unlock door ",
+	  "response": "[WARNING] ALERT: Unauthorized Access!\nDisabling alarm... [OK]\nDoor status: UNLOCKED \nACCESS GRANTED. DOOR OPEN.",
+	  "time": 1.8
+	}
+  ],
+  "status": "ACCESS GRANTED. DOOR OPEN."
+}
