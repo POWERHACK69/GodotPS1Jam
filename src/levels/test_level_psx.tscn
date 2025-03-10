@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3jg0pxwagv8n"]
+[gd_scene load_steps=31 format=3 uid="uid://b3jg0pxwagv8n"]
 
 [ext_resource type="PackedScene" uid="uid://bnfdmupamtp3n" path="res://assets/models/environment/floor_gratiing/floor_grating.tscn" id="1_cagvy"]
 [ext_resource type="PackedScene" uid="uid://5hm43pygb7vc" path="res://assets/models/environment/floor_grating_triangle/floor_grating_triangle.tscn" id="3_kbglb"]
@@ -9,10 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://d0v6l6lpqckgm" path="res://src/camera_area.tscn" id="7_dhkdp"]
 [ext_resource type="Script" uid="uid://dinle0x3fchju" path="res://scripts/camera_manager.gd" id="8_8bpti"]
 [ext_resource type="PackedScene" uid="uid://bgo3kuxpednsm" path="res://src/chars/player.tscn" id="8_do65p"]
+[ext_resource type="Script" uid="uid://cssfnorr4kc11" path="res://assets/models/platforms/hand/hand.gd" id="9_xvcnj"]
 [ext_resource type="Shader" uid="uid://bbusoxutr5iuv" path="res://addons/shaders/psx_water.gdshader" id="11_fu3tp"]
 [ext_resource type="PackedScene" uid="uid://clnso0snqxgyp" path="res://assets/models/environment/city_tile/city_tile.tscn" id="13_7hw1t"]
 [ext_resource type="PackedScene" uid="uid://cbc747bh5r6fs" path="res://assets/models/environment/terminal/terminal.tscn" id="13_ktsnu"]
 [ext_resource type="PackedScene" uid="uid://gkrmmgdpyjwx" path="res://assets/models/environment/pillar/pillar.tscn" id="13_ytddh"]
+[ext_resource type="ArrayMesh" uid="uid://caub0wrgoered" path="res://assets/models/platforms/hand/PlatformHand.res" id="14_ktsnu"]
+[ext_resource type="PackedScene" uid="uid://dv5unnh4ewgjq" path="res://assets/models/platforms/hand/hand.tscn" id="15_ktsnu"]
+[ext_resource type="PackedScene" uid="uid://cgfw1gy2rno4n" path="res://assets/models/platforms/fist/fist.tscn" id="16_u180l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a11jm"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -345,6 +349,27 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, -0
 
 [node name="Barrier22" parent="Environment/RoomWithHole" instance=ExtResource("4_qif8t")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, -0.8, -2)
+
+[node name="PlatformHand4" type="MeshInstance3D" parent="Environment/RoomWithHole"]
+transform = Transform3D(-5.54268, 0, -4.40506e-07, -4.84556e-07, -2.20253e-07, 5.0388, -2.11806e-14, 5.0388, 2.20253e-07, -4.2, -0.2, -6.2)
+mesh = ExtResource("14_ktsnu")
+skeleton = NodePath("../../..")
+
+[node name="Hand" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+
+[node name="Hand3" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
+script = ExtResource("9_xvcnj")
+
+[node name="Hand2" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, -3, -0.2, -12.2)
+
+[node name="Hand4" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 1.38402, -0.42331, -14.6519)
+
+[node name="StaticBody3D" parent="Environment/RoomWithHole" instance=ExtResource("16_u180l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3872, -5, -10.3248)
 
 [node name="RedCorridors" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)

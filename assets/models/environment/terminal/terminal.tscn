@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbc747bh5r6fs"]
+[gd_scene load_steps=14 format=3 uid="uid://cbc747bh5r6fs"]
 
 [ext_resource type="ArrayMesh" uid="uid://ce4d5rg1143r7" path="res://assets/models/environment/terminal/Terminal.res" id="1_0euul"]
 [ext_resource type="ArrayMesh" uid="uid://ko83pan1kuq" path="res://assets/models/environment/terminal/TerminalScreen.res" id="2_71h25"]
 [ext_resource type="Texture2D" uid="uid://dtp5bq55o0ts1" path="res://assets/models/environment/terminal/A_ps1-terminal.png" id="2_blps8"]
 [ext_resource type="Shader" uid="uid://be8ldcl6osvtp" path="res://addons/godot_psx_style_demo/shaders/psx_lit.gdshader" id="2_ykp3x"]
+[ext_resource type="ArrayMesh" uid="uid://cnmer7vr0b83q" path="res://assets/models/environment/terminal/Controller.res" id="5_blps8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykp3x"]
 size = Vector3(1, 1, 0.4)
@@ -46,6 +47,14 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_pan_velocity = Vector2(0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecvfx"]
+render_priority = 0
+shader = ExtResource("2_ykp3x")
+shader_parameter/modulate_color = Color(0.323, 0.3247, 0.34, 1)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0, 0)
+
 [node name="Terminal" type="StaticBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -74,3 +83,8 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.7)
 light_color = Color(0.58, 0.972, 1, 1)
 light_energy = 0.1
+
+[node name="Controller" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39445, 0.377447)
+material_override = SubResource("ShaderMaterial_ecvfx")
+mesh = ExtResource("5_blps8")
