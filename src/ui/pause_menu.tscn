@@ -1,0 +1,120 @@
+[gd_scene load_steps=3 format=3 uid="uid://cimvcdwoi2wxr"]
+
+[ext_resource type="Script" uid="uid://kt3bfwn7lssi" path="res://scripts/ui/pause_menu.gd" id="1_yqfnv"]
+[ext_resource type="Script" uid="uid://bqv2jxxi1wuoh" path="res://scripts/ui/options_menu.gd" id="2_mmpqy"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_yqfnv")
+
+[node name="MainPauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -158.5
+offset_top = -100.5
+offset_right = 158.5
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="MainPauseMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenuButton")
+focus_neighbor_bottom = NodePath("../OptionsButton")
+theme_override_font_sizes/font_size = 36
+text = "Resume"
+
+[node name="OptionsButton" type="Button" parent="MainPauseMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ResumeButton")
+focus_neighbor_bottom = NodePath("../MainMenuButton")
+theme_override_font_sizes/font_size = 36
+text = "Options"
+
+[node name="MainMenuButton" type="Button" parent="MainPauseMenu/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OptionsButton")
+focus_neighbor_bottom = NodePath("../ResumeButton")
+theme_override_font_sizes/font_size = 36
+text = "Main Menu"
+
+[node name="OptionsMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_mmpqy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.5
+offset_top = -175.5
+offset_right = 280.5
+offset_bottom = 175.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="OptionLabel" type="Label" parent="OptionsMenu/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="OptionsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OptionsContainer" type="VBoxContainer" parent="OptionsMenu/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TurningSpeed" type="HBoxContainer" parent="OptionsMenu/VBoxContainer/ScrollContainer/OptionsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="OptionsMenu/VBoxContainer/ScrollContainer/OptionsContainer/TurningSpeed"]
+layout_mode = 2
+text = "Turning Speed"
+
+[node name="HSlider" type="HSlider" parent="OptionsMenu/VBoxContainer/ScrollContainer/OptionsContainer/TurningSpeed"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.5
+max_value = 6.0
+step = 0.1
+value = 3.5
+
+[node name="LineEdit" type="LineEdit" parent="OptionsMenu/VBoxContainer/ScrollContainer/OptionsContainer/TurningSpeed"]
+layout_mode = 2
+placeholder_text = "3"
+
+[node name="BackButton" type="Button" parent="OptionsMenu/VBoxContainer/ScrollContainer/OptionsContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="MainPauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MainPauseMenu/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="value_changed" from="OptionsMenu/VBoxContainer/ScrollContainer/OptionsContainer/TurningSpeed/HSlider" to="OptionsMenu" method="_on_turning_speed_h_slider_value_changed"]
+[connection signal="text_submitted" from="OptionsMenu/VBoxContainer/ScrollContainer/OptionsContainer/TurningSpeed/LineEdit" to="OptionsMenu" method="_on_turning_speed_line_edit_text_submitted"]
+[connection signal="pressed" from="OptionsMenu/VBoxContainer/ScrollContainer/OptionsContainer/BackButton" to="." method="_on_back_button_pressed"]
