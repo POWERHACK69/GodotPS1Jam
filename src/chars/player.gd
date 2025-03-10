@@ -9,6 +9,10 @@ extends CharacterBody3D
 
 var is_pause_menu_open : bool = false
 
+func _ready() -> void:
+	Settings.get_player(self)
+	rotate_speed = Settings.rotate_speed
+
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("pause"):
 		get_tree().paused = true

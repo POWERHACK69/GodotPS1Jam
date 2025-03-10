@@ -302,3 +302,4 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_8bpti")
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_8bpti")]
+visible = false
