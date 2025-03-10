@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var rotate_speed : float = 3.0
 @export var gravity : float = 9.8
 
+@onready var interact_collision : CollisionShape3D = $Area3D/CollisionShape3D
 @onready var pause_menu : PauseMenu =  $"../PauseMenu"
 
 var is_pause_menu_open : bool = false
@@ -42,7 +43,7 @@ func _process(delta):
 		rotate_y(-rotate_speed * delta)
 
 	if Input.is_action_just_pressed("interact"):
-		if $Area3D/CollisionShape3D.disabled == true:
-			$Area3D/CollisionShape3D.disabled = false
+		if interact_collision.disabled == true:
+			interact_collision.disabled = false
 			await get_tree().create_timer(0.2).timeout
-			$Area3D/CollisionShape3D.disabled = true
+			interact_collision.disabled = true
