@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var gravity : float = 9.8
 
 @onready var pause_menu : PauseMenu =  $"../PauseMenu"
+@onready var animation_tree := $AnimationTree
 
 var is_pause_menu_open : bool = false
 
@@ -28,12 +29,33 @@ func _process(delta):
 	if Input.is_action_pressed("forward"):
 		input_dir.z += 1
 	if Input.is_action_pressed("backward"):
-		input_dir.z -= 1
+		input_dir.z -= 0.5
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		input_dir.y +=1.3
-
+		input_dir.y += 1.3
+		animation_tree.set("parameters/Jumping/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	
+	
+	
 	velocity += transform.basis * (input_dir * move_speed)
 	velocity.y -= gravity * delta
+	
+	#print(animation_tree.get_root_motion_position().z)
+	
+	# Forwards and backwards animation
+	var velocity_rotated = velocity * global_basis
+	#print(velocity_rotated)
+	var blended_amount = lerpf(animation_tree.get("parameters/Blend3/blend_amount"), velocity_rotated.z * 0.2, 0.1)
+	animation_tree.set("parameters/Blend3/blend_amount", blended_amount)
+	animation_tree.set("parameters/RunBlend/blend_amount", clampf(velocity_rotated.z * 0.25, 0.0, 1.0))
+	animation_tree.set("parameters/ForwardSpeed/scale", maxf(1.0, velocity_rotated.z * 0.5))
+	animation_tree.set("parameters/BackwardSpeed/scale", -velocity_rotated.z * 0.95)
+	
+	# Falling animation
+	if not is_on_floor() and velocity.y <= -2.0:
+		animation_tree.set("parameters/Falling/blend_amount", lerpf(animation_tree.get("parameters/Falling/blend_amount"), 1.0, 0.02))
+	else:
+		animation_tree.set("parameters/Falling/blend_amount", 0.0)
+	
 	move_and_slide()
 
 	if Input.is_action_pressed("left"):

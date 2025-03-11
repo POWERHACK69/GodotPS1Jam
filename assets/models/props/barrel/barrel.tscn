@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dai6jmkrrvxer"]
+
+[ext_resource type="ArrayMesh" uid="uid://d4ajhiwv34jgv" path="res://assets/models/props/barrel/Barrel.res" id="1_binpt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g2gsc"]
+height = 1.0
+radius = 0.4
+
+[node name="Barrel" type="StaticBody3D"]
+
+[node name="Barrel" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = ExtResource("1_binpt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_g2gsc")

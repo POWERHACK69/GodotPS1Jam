@@ -85,6 +85,6 @@ light_color = Color(0.58, 0.972, 1, 1)
 light_energy = 0.1
 
 [node name="Controller" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.39445, 0.377447)
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -0.39445, 0.377447)
 material_override = SubResource("ShaderMaterial_ecvfx")
 mesh = ExtResource("5_blps8")
