@@ -219,7 +219,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0127003, 0.268117, 0.067538
 visible = false
 mesh = SubResource("SphereMesh_pf7im")
 
-[node name="Area3D" type="Area3D" parent="." groups=["PlayerArea"]]
+[node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.143845, 0.465686)
@@ -410,7 +410,7 @@ mesh = SubResource("ArrayMesh_5mw8o")
 skin = SubResource("Skin_ai140")
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Skeleton3D"]
-transform = Transform3D(-0.493627, -0.0983803, 0.864091, 0.487723, -0.853945, 0.181395, 0.72004, 0.510979, 0.469513, -0.0033472, 0.0108856, 0.00142804)
+transform = Transform3D(-0.493627, -0.0983803, 0.864091, 0.487723, -0.853945, 0.181395, 0.72004, 0.510979, 0.469513, -0.00334719, 0.0108857, 0.00142804)
 bone_name = "mixamorig_RightHand"
 bone_idx = 14
 
@@ -419,7 +419,7 @@ remote_path = NodePath("../../../HandGlowyRoot")
 update_scale = false
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Skeleton3D"]
-transform = Transform3D(0.998804, 0.012936, -0.0471457, -0.0113855, 0.99939, 0.0330088, 0.0475439, -0.0324326, 0.998342, 6.43953e-05, 0.0132332, -6.26414e-05)
+transform = Transform3D(0.998804, 0.0129361, -0.0471457, -0.0113856, 0.99939, 0.0330089, 0.047544, -0.0324326, 0.998342, 6.43954e-05, 0.0132332, -6.26415e-05)
 bone_name = "mixamorig_Spine1"
 bone_idx = 2
 
@@ -455,7 +455,7 @@ parameters/RunningSpeed/scale = 1.1
 parameters/TimeScale/scale = 0.5
 
 [node name="HandGlowyRoot" type="Node3D" parent="."]
-transform = Transform3D(-0.493564, -0.098366, 0.863971, 0.487661, -0.853821, 0.18137, 0.719948, 0.510905, 0.469447, -0.368192, 0.19742, 0.157084)
+transform = Transform3D(-0.493561, -0.098367, 0.863966, 0.487658, -0.853828, 0.181369, 0.719944, 0.51091, 0.469445, -0.368191, 0.197425, 0.157085)
 top_level = true
 
 [node name="GlowyBit2" type="MeshInstance3D" parent="HandGlowyRoot"]
@@ -465,7 +465,7 @@ mesh = SubResource("QuadMesh_bammc")
 skeleton = NodePath("../..")
 
 [node name="BodyGlowyRoot" type="Node3D" parent="."]
-transform = Transform3D(0.99863, 0.0129338, -0.0471378, -0.0113836, 0.999215, 0.0330033, 0.0475356, -0.0324269, 0.998176, 0.00708348, 0.455651, -0.00689055)
+transform = Transform3D(0.998626, 0.0129338, -0.0471373, -0.0113835, 0.999213, 0.033003, 0.0475355, -0.0324269, 0.998165, 0.0070835, 0.455656, -0.00689056)
 top_level = true
 
 [node name="GlowyBit" type="MeshInstance3D" parent="BodyGlowyRoot"]
@@ -473,3 +473,5 @@ transform = Transform3D(-0.99974, -0.0217873, -0.00661596, -0.0227572, 0.946494,
 material_override = SubResource("StandardMaterial3D_h8qpn")
 mesh = SubResource("QuadMesh_bammc")
 skeleton = NodePath("../..")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

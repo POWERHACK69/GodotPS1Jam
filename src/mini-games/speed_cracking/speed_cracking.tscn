@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://df6al5e6ne53q"]
+[gd_scene load_steps=5 format=3 uid="uid://df6al5e6ne53q"]
 
 [ext_resource type="Script" uid="uid://dqa82i4oxv51q" path="res://src/mini-games/speed_cracking/speed_cracking.gd" id="1_usfiq"]
 [ext_resource type="FontFile" uid="uid://canfy3s0xvigq" path="res://assets/fonts/whitrabt.ttf" id="2_ao05n"]
+[ext_resource type="Texture2D" uid="uid://cr3rwnmfaejxj" path="res://assets/2d/terminal-timer.png" id="3_hqthg"]
+[ext_resource type="Script" uid="uid://cu2j23r5mouaj" path="res://src/mini-games/speed_cracking/keyboard_sound.gd" id="4_03kqu"]
 
 [node name="SpeedCracking" type="Control"]
 layout_mode = 3
@@ -73,5 +75,20 @@ Anti-trace enabled... ✅
 autowrap_mode = 3
 
 [node name="TextTimer" type="Timer" parent="ColorRect"]
+one_shot = true
+
+[node name="TimeProgressBar" type="TextureProgressBar" parent="ColorRect"]
+layout_mode = 0
+offset_left = 365.0
+offset_top = 218.5
+offset_right = 405.0
+offset_bottom = 258.5
+fill_mode = 5
+texture_progress = ExtResource("3_hqthg")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="KeyboardSound" type="Node" parent="."]
+script = ExtResource("4_03kqu")
+
+[connection signal="timeout" from="ColorRect/TextTimer" to="." method="_on_text_timer_timeout"]

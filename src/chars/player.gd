@@ -68,3 +68,9 @@ func _process(delta):
 			$Area3D/CollisionShape3D.disabled = false
 			await get_tree().create_timer(0.2).timeout
 			$Area3D/CollisionShape3D.disabled = true
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area.is_in_group("terminal"):
+		area.get_parent().start_mini_game()
+		print("beep boop")

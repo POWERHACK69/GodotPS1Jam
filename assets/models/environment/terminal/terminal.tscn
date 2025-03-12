@@ -1,10 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://cbc747bh5r6fs"]
+[gd_scene load_steps=19 format=3 uid="uid://cbc747bh5r6fs"]
 
 [ext_resource type="ArrayMesh" uid="uid://ce4d5rg1143r7" path="res://assets/models/environment/terminal/Terminal.res" id="1_0euul"]
+[ext_resource type="Script" uid="uid://0t3grg7471dh" path="res://scripts/terminal.gd" id="1_ecvfx"]
 [ext_resource type="ArrayMesh" uid="uid://ko83pan1kuq" path="res://assets/models/environment/terminal/TerminalScreen.res" id="2_71h25"]
 [ext_resource type="Texture2D" uid="uid://dtp5bq55o0ts1" path="res://assets/models/environment/terminal/A_ps1-terminal.png" id="2_blps8"]
 [ext_resource type="Shader" uid="uid://be8ldcl6osvtp" path="res://addons/godot_psx_style_demo/shaders/psx_lit.gdshader" id="2_ykp3x"]
 [ext_resource type="ArrayMesh" uid="uid://cnmer7vr0b83q" path="res://assets/models/environment/terminal/Controller.res" id="5_blps8"]
+[ext_resource type="AudioStream" uid="uid://bmsogogt8quj8" path="res://assets/sounds/sfx/short-beep-tone-47916.wav" id="7_fv1vh"]
+[ext_resource type="AudioStream" uid="uid://c84kapjqynd6a" path="res://assets/sounds/sfx/info-computer-sound-299367.wav" id="8_0adxs"]
+[ext_resource type="AudioStream" uid="uid://dpeh0yl84bgym" path="res://assets/sounds/sfx/robot-voice-does-not-compute-82799.wav" id="8_37aon"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ykp3x"]
 size = Vector3(1, 1, 0.4)
@@ -55,7 +59,10 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_pan_velocity = Vector2(0, 0)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_blps8"]
+
 [node name="Terminal" type="StaticBody3D"]
+script = ExtResource("1_ecvfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
@@ -88,3 +95,18 @@ light_energy = 0.1
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, -0.39445, 0.377447)
 material_override = SubResource("ShaderMaterial_ecvfx")
 mesh = ExtResource("5_blps8")
+
+[node name="Area3D" type="Area3D" parent="." groups=["terminal"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.519805)
+shape = SubResource("BoxShape3D_blps8")
+
+[node name="Success" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_fv1vh")
+
+[node name="Interact" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_0adxs")
+
+[node name="Fail" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_37aon")
