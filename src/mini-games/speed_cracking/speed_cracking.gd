@@ -8,6 +8,7 @@ extends Control
 
 @onready var key_sound = preload("res://assets/sounds/sfx/key.wav")
 
+
 var terminal
 
 var hacking_sequence = []  # Stores the JSON sequence
@@ -62,7 +63,7 @@ func load_hacking_sequence():
 	if file:
 		var data = JSON.parse_string(file.get_as_text())
 		if data and "hacking_sequence" in data:
-			hacking_sequence = data["hacking_sequence"]  # Load full sequence
+			hacking_sequence = data["hacking_sequence"] 
 	else:
 		print("Failed to load JSON file.")
 
@@ -70,17 +71,17 @@ func start_next_command():
 	if current_index < hacking_sequence.size():
 		var entry = hacking_sequence[current_index]
 		setup_words(entry["command"])
-		print(entry["command"])
-		current_response = entry["response"]  # Store response
+		#print(entry["command"])
+		current_response = entry["response"]
 		time_progress_bar.max_value = entry["time"] * 10
 		time_progress_bar.value = entry["time"] * 10
 		start_text_timer(entry["time"])
 	else:
-		print("HACK COMPLETE")
+		#print("HACK COMPLETE")
 		response_label.text = "PROGRAM COMPLETE."  # Show final message
 		if terminal != null:
 			terminal.mini_game_passed = true
-			terminal.stop_mini_game()
+			terminal.end_mini_game()
 
 func setup_words(text):
 	word_list = text.split(" ")
@@ -102,7 +103,7 @@ func setup_words(text):
 		var arrow_sprite = TextureRect.new()
 		arrow_sprite.texture = arrow_sprites[arrow_action]
 		arrow_sprite.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		arrow_sprite.custom_minimum_size = Vector2(32, 32)  # Adjust size as needed
+		arrow_sprite.custom_minimum_size = Vector2(42, 42)  # Adjust size as needed
 		arrow_container.add_child(arrow_sprite)
 
 
@@ -135,12 +136,13 @@ func _on_text_timer_timeout():
 	game_lost()
 
 func game_won():
-	print("ACCESS GRANTED")  
+	#print("ACCESS GRANTED")  
 	response_label.text = current_response  
 	response_label.visible_ratio = 0  # Start invisible
 
 	# Create Tween node
 	var tween := get_tree().create_tween()
+	$AudioStreamPlayer.play()
 	tween.tween_property(response_label, "visible_ratio", 1, 1.75)  # Fade-in over 1.75 seconds
 
 	current_index += 1  # Move to next command in sequence
@@ -150,5 +152,5 @@ func game_won():
 func game_lost():
 	if terminal != null:
 		terminal.mini_game_passed = false
-		terminal.stop_mini_game()
-	print("ACCESS DENIED")
+		terminal.end_mini_game()
+	#print("ACCESS DENIED")

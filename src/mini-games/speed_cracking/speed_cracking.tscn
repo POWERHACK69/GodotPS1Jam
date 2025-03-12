@@ -1,11 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://df6al5e6ne53q"]
+[gd_scene load_steps=9 format=3 uid="uid://df6al5e6ne53q"]
 
+[ext_resource type="Script" uid="uid://n2ji01awmkrj" path="res://src/mini-games/speed_cracking/speed_cracking_canvas.gd" id="1_1hveu"]
 [ext_resource type="Script" uid="uid://dqa82i4oxv51q" path="res://src/mini-games/speed_cracking/speed_cracking.gd" id="1_usfiq"]
 [ext_resource type="FontFile" uid="uid://canfy3s0xvigq" path="res://assets/fonts/whitrabt.ttf" id="2_ao05n"]
 [ext_resource type="Texture2D" uid="uid://cr3rwnmfaejxj" path="res://assets/2d/terminal-timer.png" id="3_hqthg"]
 [ext_resource type="Script" uid="uid://cu2j23r5mouaj" path="res://src/mini-games/speed_cracking/keyboard_sound.gd" id="4_03kqu"]
+[ext_resource type="AudioStream" uid="uid://cbrbhbvshas4y" path="res://assets/sounds/sfx/text-anim.wav" id="6_g8n7a"]
+[ext_resource type="Shader" uid="uid://b2l6wxs5s5bfg" path="res://scripts/shaders/speed_cracking.gdshader" id="7_o411h"]
 
-[node name="SpeedCracking" type="Control"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2x6e"]
+shader = ExtResource("7_o411h")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 0.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.05
+shader_parameter/interference_amount = 0.25
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 2.5
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_1hveu")
+
+[node name="SpeedCracking" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -21,7 +44,7 @@ grow_vertical = 2
 script = ExtResource("1_usfiq")
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="SpeedCracking"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,13 +53,13 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.115635, 0.115635, 0.115635, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SpeedCracking/ColorRect"]
 layout_mode = 0
 offset_top = 226.5
 offset_right = 410.0
 offset_bottom = 266.5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SpeedCracking/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,17 +68,17 @@ offset_bottom = -61.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SpeedCracking/ColorRect/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="SpeedCracking/ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.223529, 1, 0.0784314, 1)
 theme_override_fonts/font = ExtResource("2_ao05n")
 theme_override_font_sizes/font_size = 22
 text = "> "
 
-[node name="Label2" type="Label" parent="ColorRect/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="SpeedCracking/ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.223529, 1, 0.0784314, 1)
@@ -63,7 +86,7 @@ theme_override_fonts/font = ExtResource("2_ao05n")
 theme_override_font_sizes/font_size = 22
 text = "123456789012345678901234567890"
 
-[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="Label" type="Label" parent="SpeedCracking/ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(410, 23)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ao05n")
@@ -74,10 +97,10 @@ Anti-trace enabled... ✅
 "
 autowrap_mode = 3
 
-[node name="TextTimer" type="Timer" parent="ColorRect"]
+[node name="TextTimer" type="Timer" parent="SpeedCracking/ColorRect"]
 one_shot = true
 
-[node name="TimeProgressBar" type="TextureProgressBar" parent="ColorRect"]
+[node name="TimeProgressBar" type="TextureProgressBar" parent="SpeedCracking/ColorRect"]
 layout_mode = 0
 offset_left = 365.0
 offset_top = 218.5
@@ -86,9 +109,24 @@ offset_bottom = 258.5
 fill_mode = 5
 texture_progress = ExtResource("3_hqthg")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="SpeedCracking"]
 
-[node name="KeyboardSound" type="Node" parent="."]
+[node name="KeyboardSound" type="Node" parent="SpeedCracking"]
 script = ExtResource("4_03kqu")
 
-[connection signal="timeout" from="ColorRect/TextTimer" to="." method="_on_text_timer_timeout"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SpeedCracking"]
+stream = ExtResource("6_g8n7a")
+volume_db = -14.0
+
+[node name="ColorRect2" type="ColorRect" parent="SpeedCracking"]
+material = SubResource("ShaderMaterial_w2x6e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="timeout" from="SpeedCracking/ColorRect/TextTimer" to="SpeedCracking" method="_on_text_timer_timeout"]

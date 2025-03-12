@@ -455,7 +455,7 @@ parameters/RunningSpeed/scale = 1.1
 parameters/TimeScale/scale = 0.5
 
 [node name="HandGlowyRoot" type="Node3D" parent="."]
-transform = Transform3D(-0.493561, -0.098367, 0.863966, 0.487658, -0.853828, 0.181369, 0.719944, 0.51091, 0.469445, -0.368191, 0.197425, 0.157085)
+transform = Transform3D(-0.493562, -0.098367, 0.863965, 0.487659, -0.853828, 0.181369, 0.719945, 0.51091, 0.469444, -0.368191, 0.197425, 0.157085)
 top_level = true
 
 [node name="GlowyBit2" type="MeshInstance3D" parent="HandGlowyRoot"]
@@ -465,7 +465,7 @@ mesh = SubResource("QuadMesh_bammc")
 skeleton = NodePath("../..")
 
 [node name="BodyGlowyRoot" type="Node3D" parent="."]
-transform = Transform3D(0.998626, 0.0129338, -0.0471373, -0.0113835, 0.999213, 0.033003, 0.0475355, -0.0324269, 0.998165, 0.0070835, 0.455656, -0.00689056)
+transform = Transform3D(0.998626, 0.0129338, -0.0471374, -0.0113835, 0.999212, 0.033003, 0.0475355, -0.0324268, 0.998166, 0.0070835, 0.455656, -0.00689056)
 top_level = true
 
 [node name="GlowyBit" type="MeshInstance3D" parent="BodyGlowyRoot"]
