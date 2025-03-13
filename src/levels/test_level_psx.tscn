@@ -91,7 +91,7 @@ albedo_color = Color(0.2187, 0.24264, 0.27, 1)
 size = Vector2(10000, 10000)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8bpti"]
-size = Vector3(3.98071, 5.2832, 6.62244)
+size = Vector3(3.98071, 5.2832, 7.18915)
 
 [node name="Test_Level_PSX" type="Node3D"]
 
@@ -1868,6 +1868,11 @@ top_level = true
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera4/CameraArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.283355)
+shape = SubResource("BoxShape3D_8bpti")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CameraManager/Camera4/CameraArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67431, 0, -4.52571)
 shape = SubResource("BoxShape3D_8bpti")
 
 [node name="Player" parent="." instance=ExtResource("8_do65p")]

@@ -10,6 +10,9 @@ extends CharacterBody3D
 
 var is_pause_menu_open : bool = false
 
+var interacting: bool = false
+
+
 func _ready() -> void:
 	Settings.get_player(self)
 	rotate_speed = Settings.rotate_speed
@@ -26,14 +29,26 @@ func _process(delta):
 
 	var input_dir : Vector3 = Vector3()
 
-	if Input.is_action_pressed("forward"):
-		input_dir.z += 1
-	if Input.is_action_pressed("backward"):
-		input_dir.z -= 0.5
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		input_dir.y += 1.3
-		animation_tree.set("parameters/Jumping/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	
+	if not interacting:
+		if Input.is_action_pressed("forward"):
+			input_dir.z += 1
+		if Input.is_action_pressed("backward"):
+			input_dir.z -= 0.5
+		if is_on_floor() and Input.is_action_just_pressed("jump"):
+			input_dir.y += 1.3
+			animation_tree.set("parameters/Jumping/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		
+		if Input.is_action_pressed("left"):
+			rotate_y(rotate_speed * delta)
+		if Input.is_action_pressed("right"):
+			rotate_y(-rotate_speed * delta)
+
+		if Input.is_action_just_pressed("interact"):
+			if $Area3D/CollisionShape3D.disabled == true:
+				$Area3D/CollisionShape3D.disabled = false
+				await get_tree().create_timer(0.2).timeout
+				$Area3D/CollisionShape3D.disabled = true
+
 	
 	
 	velocity += transform.basis * (input_dir * move_speed)
@@ -58,13 +73,7 @@ func _process(delta):
 	
 	move_and_slide()
 
-	if Input.is_action_pressed("left"):
-		rotate_y(rotate_speed * delta)
-	if Input.is_action_pressed("right"):
-		rotate_y(-rotate_speed * delta)
-
-	if Input.is_action_just_pressed("interact"):
-		if $Area3D/CollisionShape3D.disabled == true:
-			$Area3D/CollisionShape3D.disabled = false
-			await get_tree().create_timer(0.2).timeout
-			$Area3D/CollisionShape3D.disabled = true
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area.is_in_group("terminal"):
+		area.get_parent().start_mini_game()
+		#print("beep boop")
