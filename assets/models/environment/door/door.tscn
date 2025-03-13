@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://v2q5h44l70oq"]
+
+[ext_resource type="ArrayMesh" uid="uid://cxeq7s7myhrcm" path="res://assets/models/environment/door/DoorFrame.res" id="1_dy6y1"]
+[ext_resource type="ArrayMesh" uid="uid://uuyinsfjef76" path="res://assets/models/environment/door/CircleR.res" id="2_eucfe"]
+[ext_resource type="ArrayMesh" uid="uid://d3abxc45yefrq" path="res://assets/models/environment/door/CircleL.res" id="3_og5ow"]
+[ext_resource type="ArrayMesh" uid="uid://x6xbqgf10sqx" path="res://assets/models/environment/door/DoorL.res" id="4_fl0ev"]
+[ext_resource type="ArrayMesh" uid="uid://cxmmi1srpb3i4" path="res://assets/models/environment/door/DoorR.res" id="5_og5ow"]
+[ext_resource type="ArrayMesh" uid="uid://chgt7r1qxdvle" path="res://assets/models/environment/door/PipeBL.res" id="6_fl0ev"]
+[ext_resource type="ArrayMesh" uid="uid://hnyb1782anoq" path="res://assets/models/environment/door/PipeTL.res" id="7_qvmem"]
+[ext_resource type="ArrayMesh" uid="uid://dct1t36xfd8t8" path="res://assets/models/environment/door/PipeBR.res" id="8_dmjbe"]
+[ext_resource type="ArrayMesh" uid="uid://dnce65v6c1gk5" path="res://assets/models/environment/door/PipeTR.res" id="9_r12xi"]
+
+[node name="Door" type="AnimatableBody3D"]
+
+[node name="DoorFrame" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 7.45058e-09)
+mesh = ExtResource("1_dy6y1")
+
+[node name="CircleR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = ExtResource("2_eucfe")
+
+[node name="CircleL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = ExtResource("3_og5ow")
+
+[node name="DoorL" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, 4.47035e-08)
+mesh = ExtResource("4_fl0ev")
+
+[node name="DoorR" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+mesh = ExtResource("5_og5ow")
+
+[node name="PipeBl" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.5, 0)
+mesh = ExtResource("6_fl0ev")
+
+[node name="PipeTl" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.5, 0)
+mesh = ExtResource("7_qvmem")
+
+[node name="PipeBr" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.5, 0)
+mesh = ExtResource("8_dmjbe")
+
+[node name="PipeTr" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.5, 0.1)
+mesh = ExtResource("9_r12xi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
