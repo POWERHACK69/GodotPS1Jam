@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://b3jg0pxwagv8n"]
+[gd_scene load_steps=32 format=3 uid="uid://b3jg0pxwagv8n"]
 
 [ext_resource type="PackedScene" uid="uid://bnfdmupamtp3n" path="res://assets/models/environment/floor_gratiing/floor_grating.tscn" id="1_cagvy"]
 [ext_resource type="PackedScene" uid="uid://5hm43pygb7vc" path="res://assets/models/environment/floor_grating_triangle/floor_grating_triangle.tscn" id="3_kbglb"]
@@ -17,6 +17,7 @@
 [ext_resource type="ArrayMesh" uid="uid://caub0wrgoered" path="res://assets/models/platforms/hand/PlatformHand.res" id="14_ktsnu"]
 [ext_resource type="PackedScene" uid="uid://dv5unnh4ewgjq" path="res://assets/models/platforms/hand/hand.tscn" id="15_ktsnu"]
 [ext_resource type="PackedScene" uid="uid://cgfw1gy2rno4n" path="res://assets/models/platforms/fist/fist.tscn" id="16_u180l"]
+[ext_resource type="PackedScene" uid="uid://v2q5h44l70oq" path="res://assets/models/environment/door/door.tscn" id="18_we8yk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a11jm"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -1877,3 +1878,10 @@ shape = SubResource("BoxShape3D_8bpti")
 
 [node name="Player" parent="." instance=ExtResource("8_do65p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 8)
+
+[node name="Door" parent="." instance=ExtResource("18_we8yk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0, 1)
+
+[node name="Terminal" parent="." node_paths=PackedStringArray("affected_objects") instance=ExtResource("13_ktsnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1)
+affected_objects = [NodePath("../Door")]
