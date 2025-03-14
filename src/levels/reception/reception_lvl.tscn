@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsnwlnxbdm7bj"]
+[gd_scene load_steps=16 format=3 uid="uid://dsnwlnxbdm7bj"]
 
 [ext_resource type="PackedScene" uid="uid://bnfdmupamtp3n" path="res://assets/models/environment/floor_gratiing/floor_grating.tscn" id="1_q8vgp"]
 [ext_resource type="PackedScene" uid="uid://dpuw0fj3g1e1l" path="res://assets/models/environment/wall/wall_concrete.tscn" id="2_uknba"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://copkr1qe5chw3" path="res://scripts/levels/reception/env_elevator_terminal.gd" id="4_rdya1"]
 [ext_resource type="Script" uid="uid://dinle0x3fchju" path="res://scripts/camera_manager.gd" id="4_y0r12"]
 [ext_resource type="PackedScene" uid="uid://d0v6l6lpqckgm" path="res://src/camera_area.tscn" id="5_rdya1"]
-[ext_resource type="PackedScene" uid="uid://cimvcdwoi2wxr" path="res://src/ui/pause_menu.tscn" id="7_cgiqr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q8vgp"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -477,7 +476,5 @@ top_level = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Entrance5/CameraArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.3, 0, 21.9)
 shape = SubResource("BoxShape3D_rdya1")
-
-[node name="PauseMenu" parent="." instance=ExtResource("7_cgiqr")]
 
 [editable path="CameraManager/Entrance/CameraArea"]
