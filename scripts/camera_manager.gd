@@ -4,6 +4,7 @@ extends Node3D
 
 @onready var cameras = get_children()
 var active_camera: Camera3D = null
+var camera_z_rot: float = 0.0
 
 func _ready():
 	if cameras.is_empty():
@@ -22,6 +23,7 @@ func set_active_camera(camera: Camera3D):
 		# Enable the selected camera
 		camera.current = true
 		active_camera = camera
+		camera_z_rot = camera.global_rotation.z
 	else:
 		push_warning("Tried to set an invalid camera as active!")
 
@@ -31,3 +33,4 @@ func get_current_camera() -> Camera3D:
 func _process(_delta: float) -> void:
 	if !cameras.is_empty():
 		active_camera.look_at(player_node.global_transform.origin, Vector3.UP)
+		active_camera.global_rotation.z = camera_z_rot

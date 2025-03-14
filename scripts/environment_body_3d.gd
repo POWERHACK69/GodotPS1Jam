@@ -1,22 +1,33 @@
 extends AnimatableBody3D
 class_name  EnvironmentBody
 
-var last_state = false
 @export var activated : bool:
 	set = on_state_changed
 
-func _ready():
-	last_state = activated
-	print("last state:" + str(last_state))
+var last_state = false
+var game_started = false
+
+
+#func _ready():
+	#game_started = true
+	#on_state_changed(activated)
+	#last_state = activated
+
 
 # Called when 'activated' value is set
 func on_state_changed(value):
-	if last_state == activated: # if nothing changed return
+	#if not game_started:
+		#return
+	activated = value
+	
+	print("last state: " + str(last_state))
+	print("Current state: " + str(value))
+	if last_state == value: # if nothing changed return
 		return
 	
-	last_state = activated
+	last_state = value
 	
-	if activated:
+	if value:
 		_on_activated()
 	else:
 		_on_deactivated()
