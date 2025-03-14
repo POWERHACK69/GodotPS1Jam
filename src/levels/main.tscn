@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://crbf4yj6rp1q0"]
+
+[ext_resource type="PackedScene" uid="uid://bj8soy4ovh1b7" path="res://src/levels/post_process_layer.tscn" id="1_rn2v6"]
+[ext_resource type="PackedScene" uid="uid://dsnwlnxbdm7bj" path="res://src/levels/reception/reception_lvl.tscn" id="2_wr0bv"]
+[ext_resource type="PackedScene" uid="uid://cimvcdwoi2wxr" path="res://src/ui/pause_menu.tscn" id="3_rn2v6"]
+
+[node name="Main" type="Node3D"]
+
+[node name="PostProcessLayer" parent="." instance=ExtResource("1_rn2v6")]
+
+[node name="Reception" parent="PostProcessLayer/PSXLayer/BlurPostProcess/Viewport/LCDOverlay/Viewport/DitherBanding/Viewport" index="0" instance=ExtResource("2_wr0bv")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_rn2v6")]
+
+[editable path="PostProcessLayer"]
+[editable path="PauseMenu"]

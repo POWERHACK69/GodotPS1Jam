@@ -55,6 +55,7 @@ func _process(delta: float) -> void:
 		if type == "Activate":
 			for object in affected_objects:
 				object.activated = true
+				object.activate()
 				
 		if type == "Deactivate":
 			for object in affected_objects:
