@@ -61,6 +61,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 shader_parameter/uv_pan_velocity = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_blps8"]
+size = Vector3(0.613525, 1, 0.631104)
 
 [node name="Terminal" type="StaticBody3D"]
 script = ExtResource("1_ecvfx")
