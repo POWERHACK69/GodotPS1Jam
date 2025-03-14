@@ -77,3 +77,9 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("terminal"):
 		area.get_parent().start_mini_game()
 		#print("beep boop")
+
+func running_footstep_sound():
+	print("running footstep")
+
+func footstep_sound():
+	print("footstep")
