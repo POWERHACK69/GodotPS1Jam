@@ -35,9 +35,9 @@ import_script/path=""
 _subresources={
 "animations": {
 "Default animation": {
-"save_to_file/enabled": false,
+"save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "res://assets/models/player/animations/Default animation.res",
+"save_to_file/path": "res://assets/models/player/animations/jump/Default animation.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -1834,9 +1834,9 @@ _subresources={
 "slices/amount": 0
 },
 "mixamo_com": {
-"save_to_file/enabled": false,
+"save_to_file/enabled": true,
 "save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "res://assets/models/player/animations/mixamo_com.res",
+"save_to_file/path": "res://assets/models/player/animations/jump/mixamo_com.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,

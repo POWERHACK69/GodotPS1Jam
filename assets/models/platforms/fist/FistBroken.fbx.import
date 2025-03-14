@@ -1,15 +1,15 @@
 [remap]
 
-importer="animation_library"
+importer="scene"
 importer_version=1
-type="AnimationLibrary"
-uid="uid://7ci1gygnkb7s"
-path="res://.godot/imported/Idle.fbx-723399855a43df1bb03753ac7f0ef52b.res"
+type="PackedScene"
+uid="uid://bxpx58x3lphaf"
+path="res://.godot/imported/FistBroken.fbx-01fe689c627f14bbed5e76edf6ecf755.scn"
 
 [deps]
 
-source_file="res://assets/models/player/animations/Idle.fbx"
-dest_files=["res://.godot/imported/Idle.fbx-723399855a43df1bb03753ac7f0ef52b.res"]
+source_file="res://assets/models/platforms/fist/FistBroken.fbx"
+dest_files=["res://.godot/imported/FistBroken.fbx-01fe689c627f14bbed5e76edf6ecf755.scn"]
 
 [params]
 

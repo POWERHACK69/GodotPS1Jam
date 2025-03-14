@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv5unnh4ewgjq"]
+[gd_scene load_steps=5 format=3 uid="uid://dv5unnh4ewgjq"]
 
 [ext_resource type="ArrayMesh" uid="uid://caub0wrgoered" path="res://assets/models/platforms/hand/PlatformHand.res" id="1_82hpg"]
 [ext_resource type="Material" uid="uid://bhsr0t6ygcylk" path="res://assets/models/platforms/hand/hand.material" id="1_cf4y4"]
+[ext_resource type="Script" uid="uid://cssfnorr4kc11" path="res://assets/models/platforms/hand/hand.gd" id="1_hpwkw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cf4y4"]
 size = Vector3(1.9, 1, 2)
 
 [node name="Hand" type="AnimatableBody3D"]
+script = ExtResource("1_hpwkw")
+metadata/_custom_type_script = "uid://64y5n3uq1bt"
 
 [node name="PlatformHand" type="MeshInstance3D" parent="."]
 transform = Transform3D(-14, 0, -2.11394e-06, 0, 14, 0, 2.11394e-06, 0, -14, 0, -0.1, 0.05)

@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://d0v6l6lpqckgm" path="res://src/camera_area.tscn" id="7_dhkdp"]
 [ext_resource type="Script" uid="uid://dinle0x3fchju" path="res://scripts/camera_manager.gd" id="8_8bpti"]
 [ext_resource type="PackedScene" uid="uid://bgo3kuxpednsm" path="res://src/chars/player.tscn" id="8_do65p"]
-[ext_resource type="Script" uid="uid://cssfnorr4kc11" path="res://assets/models/platforms/hand/hand.gd" id="9_xvcnj"]
 [ext_resource type="Shader" uid="uid://bbusoxutr5iuv" path="res://addons/shaders/psx_water.gdshader" id="11_fu3tp"]
 [ext_resource type="PackedScene" uid="uid://clnso0snqxgyp" path="res://assets/models/environment/city_tile/city_tile.tscn" id="13_7hw1t"]
 [ext_resource type="PackedScene" uid="uid://cbc747bh5r6fs" path="res://assets/models/environment/terminal/terminal.tscn" id="13_ktsnu"]
@@ -17,6 +16,7 @@
 [ext_resource type="ArrayMesh" uid="uid://caub0wrgoered" path="res://assets/models/platforms/hand/PlatformHand.res" id="14_ktsnu"]
 [ext_resource type="PackedScene" uid="uid://dv5unnh4ewgjq" path="res://assets/models/platforms/hand/hand.tscn" id="15_ktsnu"]
 [ext_resource type="PackedScene" uid="uid://cgfw1gy2rno4n" path="res://assets/models/platforms/fist/fist.tscn" id="16_u180l"]
+[ext_resource type="PackedScene" uid="uid://v2q5h44l70oq" path="res://assets/models/environment/door/door.tscn" id="18_we8yk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a11jm"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -356,20 +356,34 @@ mesh = ExtResource("14_ktsnu")
 skeleton = NodePath("../../..")
 
 [node name="Hand" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0, -14)
+activated = true
+
+[node name="Marker3D" type="Marker3D" parent="Environment/RoomWithHole/Hand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+top_level = true
 
 [node name="Hand3" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
-script = ExtResource("9_xvcnj")
+time_to_move = 3.0
+activated = true
 
-[node name="Hand2" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, -3, -0.2, -12.2)
+[node name="Marker3D" type="Marker3D" parent="Environment/RoomWithHole/Hand3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -4)
+top_level = true
 
 [node name="Hand4" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
-transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, 1.38402, -0.42331, -14.6519)
+transform = Transform3D(-1, -1.74846e-07, 8.74228e-08, -1.74846e-07, 1, 7.64274e-15, -8.74228e-08, -7.64275e-15, -1, 1.38402, -0.42331, -17.6519)
 
 [node name="StaticBody3D" parent="Environment/RoomWithHole" instance=ExtResource("16_u180l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3872, -5, -10.3248)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3872, -5, -10.3248)
+time_to_move = 5.0
+time_to_wait = 1.0
+activated = true
+
+[node name="Marker3D" type="Marker3D" parent="Environment/RoomWithHole/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3872, -5, -4.3248)
+top_level = true
 
 [node name="RedCorridors" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
@@ -543,8 +557,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.8, 9)
 [node name="FloorGrating13" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 7)
 
-[node name="Terminal" parent="Environment/RedCorridors" instance=ExtResource("13_ktsnu")]
+[node name="Terminal" parent="Environment/RedCorridors" node_paths=PackedStringArray("affected_objects") instance=ExtResource("13_ktsnu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1.2, 2.2)
+affected_objects = [NodePath("../Door")]
+
+[node name="Door" parent="Environment/RedCorridors" instance=ExtResource("18_we8yk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.7, 0, -1)
 
 [node name="Vistas" type="Node3D" parent="."]
 
@@ -1823,56 +1841,91 @@ skeleton = NodePath("../City/CityTile150")
 script = ExtResource("8_8bpti")
 player_node = NodePath("../Player")
 
-[node name="Camera5" type="Camera3D" parent="CameraManager"]
+[node name="Camera1" type="Camera3D" parent="CameraManager"]
+transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 5, 3.9, 7)
+fov = 55.0
+far = 1000.0
+
+[node name="CameraArea3" parent="CameraManager/Camera1" instance=ExtResource("7_dhkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7551, 1, 7.03969)
+top_level = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera1/CameraArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -0.283355)
+shape = SubResource("BoxShape3D_8bpti")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CameraManager/Camera1/CameraArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17431, 0, -4.52571)
+shape = SubResource("BoxShape3D_8bpti")
+
+[node name="Camera2" type="Camera3D" parent="CameraManager"]
 transform = Transform3D(0.68284, 0.371231, -0.62922, 0.0452333, 0.838139, 0.543578, 0.729167, -0.399638, 0.555523, -8.7, 3, 3.7)
 fov = 60.0
 far = 1000.0
 
+[node name="CameraArea3" parent="CameraManager/Camera2" instance=ExtResource("7_dhkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7551, 1, 1.03969)
+top_level = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera2/CameraArea3"]
+shape = SubResource("BoxShape3D_8bpti")
+
+[node name="Camera3" type="Camera3D" parent="CameraManager"]
+transform = Transform3D(0.68284, 0.371231, -0.62922, 0.0452333, 0.838139, 0.543578, 0.729167, -0.399638, 0.555523, -4.2, 2, -8.1)
+fov = 65.0
+far = 1000.0
+
+[node name="CameraArea3" parent="CameraManager/Camera3" instance=ExtResource("7_dhkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2551, 1, -7.96031)
+top_level = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera3/CameraArea3"]
+shape = SubResource("BoxShape3D_8bpti")
+
+[node name="Camera4" type="Camera3D" parent="CameraManager"]
+transform = Transform3D(-0.0509859, 0.0529898, -0.997293, 0.0227942, 0.998393, 0.0518829, 0.998439, -0.0200871, -0.0521118, -27.2, 0.1, -6.4)
+fov = 50.0
+far = 1000.0
+
+[node name="CameraArea3" parent="CameraManager/Camera4" instance=ExtResource("7_dhkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5551, 1, -6.96031)
+top_level = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera4/CameraArea3"]
+shape = SubResource("BoxShape3D_8bpti")
+
+[node name="CameraArea4" parent="CameraManager/Camera4" instance=ExtResource("7_dhkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7551, 1, -6.96031)
+top_level = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera4/CameraArea4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+shape = SubResource("BoxShape3D_8bpti")
+
+[node name="Camera5" type="Camera3D" parent="CameraManager"]
+transform = Transform3D(-0.0509859, 0.0529898, -0.997293, -0.236398, 0.969573, 0.0636026, 0.970318, 0.239, -0.0369079, -30.2, 2.1, 3.6)
+fov = 50.0
+far = 1000.0
+
 [node name="CameraArea3" parent="CameraManager/Camera5" instance=ExtResource("7_dhkdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7551, 1, 1.03969)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5551, 1, -6.96031)
 top_level = true
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera5/CameraArea3"]
 shape = SubResource("BoxShape3D_8bpti")
 
-[node name="Camera6" type="Camera3D" parent="CameraManager"]
-transform = Transform3D(0.68284, 0.371231, -0.62922, 0.0452333, 0.838139, 0.543578, 0.729167, -0.399638, 0.555523, -4.7, 2, -7.3)
-fov = 60.0
-far = 1000.0
-
-[node name="CameraArea3" parent="CameraManager/Camera6" instance=ExtResource("7_dhkdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7551, 1, -6.96031)
+[node name="CameraArea4" parent="CameraManager/Camera5" instance=ExtResource("7_dhkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.7551, 1, -6.96031)
 top_level = true
 metadata/_edit_group_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera6/CameraArea3"]
-shape = SubResource("BoxShape3D_8bpti")
-
-[node name="CameraArea4" parent="CameraManager/Camera6" instance=ExtResource("7_dhkdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7551, 1, -6.96031)
-top_level = true
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera6/CameraArea4"]
-shape = SubResource("BoxShape3D_8bpti")
-
-[node name="Camera4" type="Camera3D" parent="CameraManager"]
-transform = Transform3D(0.707107, -0.183013, 0.683013, 0, 0.965926, 0.258819, -0.707107, -0.183013, 0.683013, 5, 5, 7)
-fov = 60.0
-far = 1000.0
-
-[node name="CameraArea3" parent="CameraManager/Camera4" instance=ExtResource("7_dhkdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7551, 1, 7.03969)
-top_level = true
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera4/CameraArea3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.283355)
-shape = SubResource("BoxShape3D_8bpti")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="CameraManager/Camera4/CameraArea3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.67431, 0, -4.52571)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera5/CameraArea4"]
 shape = SubResource("BoxShape3D_8bpti")
 
 [node name="Player" parent="." instance=ExtResource("8_do65p")]
