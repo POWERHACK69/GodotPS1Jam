@@ -3,11 +3,9 @@
 [ext_resource type="Script" uid="uid://kt3bfwn7lssi" path="res://scripts/ui/pause_menu.gd" id="1_yqfnv"]
 [ext_resource type="Script" uid="uid://bqv2jxxi1wuoh" path="res://scripts/ui/options_menu.gd" id="2_mmpqy"]
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" groups=["PauseMenu"]]
 process_mode = 2
-offset = Vector2(27, 15)
-scale = Vector2(0.5, 0.5)
-transform = Transform2D(0.5, 0, 0, 0.5, 27, 15)
+visible = false
 script = ExtResource("1_yqfnv")
 
 [node name="MainPauseMenu" type="Control" parent="."]

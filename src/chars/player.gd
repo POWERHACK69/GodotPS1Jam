@@ -6,14 +6,13 @@ extends CharacterBody3D
 @export var gravity : float = 9.8
 
 @onready var interact_collision : CollisionShape3D = $Area3D/CollisionShape3D
-@onready var pause_menu : PauseMenu =  $"../PauseMenu"
+@onready var pause_menu : PauseMenu =  get_tree().get_first_node_in_group("PauseMenu")
 
 var is_pause_menu_open : bool = false
 
 func _ready() -> void:
 	Settings.get_player(self)
 	rotate_speed = Settings.rotate_speed
-
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("pause"):
 		get_tree().paused = true

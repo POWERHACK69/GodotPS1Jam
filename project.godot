@@ -28,6 +28,7 @@ window/stretch/mode="viewport"
 [global_group]
 
 PlayerArea="An interactable player area"
+PauseMenu=""
 
 [input]
 
