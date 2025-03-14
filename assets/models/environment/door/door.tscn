@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://v2q5h44l70oq"]
 
 [ext_resource type="ArrayMesh" uid="uid://cxeq7s7myhrcm" path="res://assets/models/environment/door/DoorFrame.res" id="1_dy6y1"]
-[ext_resource type="PackedScene" path="res://src/environment_body_3d.tscn" id="1_r12xi"]
+[ext_resource type="PackedScene" uid="uid://plttrje0on65" path="res://src/environment_body_3d.tscn" id="1_r12xi"]
 [ext_resource type="ArrayMesh" uid="uid://uuyinsfjef76" path="res://assets/models/environment/door/CircleR.res" id="2_eucfe"]
 [ext_resource type="Script" uid="uid://bc2aplnb1s80e" path="res://assets/models/environment/door/door.gd" id="2_vytdj"]
 [ext_resource type="ArrayMesh" uid="uid://d3abxc45yefrq" path="res://assets/models/environment/door/CircleL.res" id="3_og5ow"]
