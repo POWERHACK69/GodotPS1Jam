@@ -32,8 +32,10 @@ func _process(delta):
 	if not interacting:
 		if Input.is_action_pressed("forward"):
 			input_dir.z += 1
+			footstep_sound()
 		if Input.is_action_pressed("backward"):
 			input_dir.z -= 0.5
+			footstep_sound()
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
 			input_dir.y += 1.3
 			animation_tree.set("parameters/Jumping/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
@@ -79,7 +81,14 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 		#print("beep boop")
 
 func running_footstep_sound():
-	print("running footstep")
+	$footstep_run.volume_db = -5
+	$footstep_run.pitch_scale = randf_range(0.5, 1.5)
+	if $footstep_run.playing == false:
+		$footstep_run.play()
+
 
 func footstep_sound():
-	print("footstep")
+	$footstep.volume_db = -5
+	$footstep.pitch_scale = randf_range(0.5, 1.5)
+	if $footstep.playing == false:
+		$footstep.play()
