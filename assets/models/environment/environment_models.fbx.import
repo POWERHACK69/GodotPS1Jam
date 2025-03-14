@@ -44,6 +44,14 @@ _subresources={
 }
 },
 "meshes": {
+"Barrel": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/props/barrel/Barrel.res"
+},
 "Barrier": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
@@ -68,6 +76,30 @@ _subresources={
 "save_to_file/enabled": true,
 "save_to_file/path": "uid://dptr1onp3elj6"
 },
+"Controller": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/environment/terminal/Controller.res"
+},
+"Crate": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/props/crate/Crate.res"
+},
+"ElectricGate": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/props/electric_gate/ElectricGate.res"
+},
 "Floor": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
@@ -83,6 +115,22 @@ _subresources={
 "lods/normal_merge_angle": 60.0,
 "save_to_file/enabled": true,
 "save_to_file/path": "uid://r00dil1uqvf2"
+},
+"Terminal": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/environment/terminal/Terminal.res"
+},
+"TerminalScreen": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"save_to_file/enabled": true,
+"save_to_file/path": "res://assets/models/environment/terminal/TerminalScreen.res"
 },
 "Wall": {
 "generate/lightmap_uv": 0,

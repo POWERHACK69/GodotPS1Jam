@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://plttrje0on65"]
+
+[ext_resource type="Script" uid="uid://64y5n3uq1bt" path="res://scripts/environment_body_3d.gd" id="1_iw6st"]
+
+[node name="EnvironmentBody3D" type="AnimatableBody3D"]
+script = ExtResource("1_iw6st")

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://clnso0snqxgyp"]
+
+[ext_resource type="PackedScene" uid="uid://jwg5aqjymrf3" path="res://assets/models/environment/city_tile/city_tile_scene.gltf" id="1_31jjl"]
+
+[node name="CityTile" type="Node3D"]
+
+[node name="CityTileScene" parent="." instance=ExtResource("1_31jjl")]

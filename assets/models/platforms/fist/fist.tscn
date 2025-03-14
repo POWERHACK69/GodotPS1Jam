@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgfw1gy2rno4n"]
+
+[ext_resource type="Material" uid="uid://bhsr0t6ygcylk" path="res://assets/models/platforms/hand/hand.material" id="1_q7td0"]
+[ext_resource type="ArrayMesh" uid="uid://bdxfsiku4gano" path="res://assets/models/platforms/fist/Fist.res" id="1_ulq6a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q7td0"]
+size = Vector3(3, 5, 2)
+
+[node name="StaticBody3D" type="StaticBody3D"]
+
+[node name="Fist" type="MeshInstance3D" parent="."]
+transform = Transform3D(400, 0, 0, 0, -1.74846e-05, 400, 0, -400, -1.74846e-05, 0.037287, 3.8, -0.187986)
+material_override = ExtResource("1_q7td0")
+mesh = ExtResource("1_ulq6a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+shape = SubResource("BoxShape3D_q7td0")
