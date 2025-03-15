@@ -11,12 +11,16 @@ var start_pos: Vector3
 var tween: Tween = null
 var dummy_float: float = 0.0
 
+var previous_position : Vector3
+var delta_position : Vector3
+
 
 func _ready():
 	print(str(name) + " active: " + str(activated))
 	start_pos = global_position
 	if activated and Marker and start_pos:
 		start_tween()
+	previous_position = global_transform.origin
 
 
 func _on_activated():
@@ -48,7 +52,10 @@ func _on_deactivated():
 		tween.tween_property(self, "global_position", start_pos, time_to_move)
 
 
-#func _physics_process(delta):
+func _physics_process(delta):
+	delta_position = global_transform.origin - previous_position
+	previous_position = global_transform.origin
+	
 	##global_position.z = start_pos.z - sin(fposmod(Time.get_ticks_msec() * 0.001 * (1/time_to_move), 1.0)  * PI) * 3.0
 	#if not Marker:
 		#return

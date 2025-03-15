@@ -7,7 +7,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_cf4y4"]
 size = Vector3(1.9, 1, 2)
 
-[node name="Hand" type="AnimatableBody3D"]
+[node name="Hand" type="AnimatableBody3D" groups=["platforms"]]
 script = ExtResource("1_hpwkw")
 metadata/_custom_type_script = "uid://64y5n3uq1bt"
 
