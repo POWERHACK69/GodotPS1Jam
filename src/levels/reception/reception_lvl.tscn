@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsnwlnxbdm7bj"]
+[gd_scene load_steps=17 format=3 uid="uid://dsnwlnxbdm7bj"]
 
 [ext_resource type="PackedScene" uid="uid://bnfdmupamtp3n" path="res://assets/models/environment/floor_gratiing/floor_grating.tscn" id="1_q8vgp"]
 [ext_resource type="PackedScene" uid="uid://dpuw0fj3g1e1l" path="res://assets/models/environment/wall/wall_concrete.tscn" id="2_uknba"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cbc747bh5r6fs" path="res://assets/models/environment/terminal/terminal.tscn" id="3_uknba"]
 [ext_resource type="Script" uid="uid://copkr1qe5chw3" path="res://scripts/levels/reception/env_elevator_terminal.gd" id="4_rdya1"]
 [ext_resource type="Script" uid="uid://dinle0x3fchju" path="res://scripts/camera_manager.gd" id="4_y0r12"]
+[ext_resource type="PackedScene" uid="uid://v2q5h44l70oq" path="res://assets/models/environment/door/door.tscn" id="5_e5121"]
 [ext_resource type="PackedScene" uid="uid://d0v6l6lpqckgm" path="res://src/camera_area.tscn" id="5_rdya1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q8vgp"]
@@ -409,6 +410,9 @@ sync_to_physics = false
 script = ExtResource("4_rdya1")
 metadata/_custom_type_script = "uid://64y5n3uq1bt"
 
+[node name="Door" parent="Environment/Interactables/ElevatorTerminal/EnvironmentBody" instance=ExtResource("5_e5121")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1.2, 0.4)
+
 [node name="Player" parent="." instance=ExtResource("3_cgiqr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
@@ -465,7 +469,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9, 0, 18.1)
 shape = SubResource("BoxShape3D_cgiqr")
 
 [node name="Entrance5" type="Camera3D" parent="CameraManager"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 2, 29.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 2, 29.4)
 fov = 110.0
 near = 0.2
 

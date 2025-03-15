@@ -30,6 +30,7 @@ window/stretch/mode="viewport"
 PlayerArea="An interactable player area"
 PauseMenu=""
 terminal=""
+LoadingScreen=""
 
 [input]
 

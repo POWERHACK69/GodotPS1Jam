@@ -3,24 +3,27 @@ extends StaticBody3D
 @export var affected_objects: Array[EnvironmentBody]
 @export var mini_game: PackedScene
 @export_enum("Toggle", "Switch", "Activate", "Deactivate") var type : String = "Toggle"
-
+@export var dev_mode : bool
 
 var mini_game_instance: CanvasLayer
 var mini_game_passed: bool = false
 var mini_game_in_progress = false
 
 func start_mini_game():
-	if not mini_game_in_progress:
-		mini_game_in_progress = true
-		if Settings.player:
-			Settings.player.interacting = true
-		$Interact.play()
-		if mini_game:
-			mini_game_instance = mini_game.instantiate()
-			get_tree().current_scene.add_child(mini_game_instance) # Spawns mini-game in the scene
-			mini_game_instance.register(self)
-		else:
-			end_mini_game()
+	if dev_mode:
+		mini_game_passed = true
+	else:
+		if not mini_game_in_progress:
+			mini_game_in_progress = true
+			if Settings.player:
+				Settings.player.interacting = true
+			$Interact.play()
+			if mini_game:
+				mini_game_instance = mini_game.instantiate()
+				get_tree().current_scene.add_child(mini_game_instance) # Spawns mini-game in the scene
+				mini_game_instance.register(self)
+			else:
+				end_mini_game()
 
 func end_mini_game():
 	
@@ -55,7 +58,7 @@ func _process(delta: float) -> void:
 		if type == "Activate":
 			for object in affected_objects:
 				object.activated = true
-				object.activate()
+				object._on_activated()
 				
 		if type == "Deactivate":
 			for object in affected_objects:
