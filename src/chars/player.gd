@@ -61,7 +61,7 @@ func _process(delta):
 	# Forwards and backwards animation
 	var velocity_rotated = velocity * global_basis
 	#print(velocity_rotated)
-	var blended_amount = lerpf(animation_tree.get("parameters/Blend3/blend_amount"), roundf(clampf(velocity_rotated.z, -1.0, 1.0)), 0.9)
+	var blended_amount = lerpf(animation_tree.get("parameters/Blend3/blend_amount"), (clampf(velocity_rotated.z, -1.0, 1.0)), 0.2)
 	animation_tree.set("parameters/Blend3/blend_amount", blended_amount)
 	animation_tree.set("parameters/RunBlend/blend_amount", clampf(velocity_rotated.z * 0.25, 0.0, 1.0))
 	animation_tree.set("parameters/ForwardSpeed/scale", maxf(1.0, velocity_rotated.z * 0.5))

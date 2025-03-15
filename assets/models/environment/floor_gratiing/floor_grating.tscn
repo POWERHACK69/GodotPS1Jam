@@ -4,6 +4,8 @@
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_sjl0m"]
 size = Vector2(4, 4)
+subdivide_width = 2
+subdivide_depth = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjl0m"]
 size = Vector3(4, 0.1, 4)
