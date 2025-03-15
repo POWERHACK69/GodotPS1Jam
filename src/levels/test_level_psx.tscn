@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3jg0pxwagv8n"]
+[gd_scene load_steps=18 format=3 uid="uid://b3jg0pxwagv8n"]
 
 [ext_resource type="PackedScene" uid="uid://bnfdmupamtp3n" path="res://assets/models/environment/floor_gratiing/floor_grating.tscn" id="1_cagvy"]
 [ext_resource type="PackedScene" uid="uid://dbjbhgqob1wnv" path="res://assets/models/environment/vistas/vfx.tscn" id="1_xvcnj"]
@@ -12,14 +12,15 @@
 [ext_resource type="PackedScene" uid="uid://bgo3kuxpednsm" path="res://src/chars/player.tscn" id="8_do65p"]
 [ext_resource type="PackedScene" uid="uid://cbc747bh5r6fs" path="res://assets/models/environment/terminal/terminal.tscn" id="13_ktsnu"]
 [ext_resource type="PackedScene" uid="uid://gkrmmgdpyjwx" path="res://assets/models/environment/pillar/pillar.tscn" id="13_ytddh"]
-[ext_resource type="ArrayMesh" uid="uid://caub0wrgoered" path="res://assets/models/platforms/hand/PlatformHand.res" id="14_ktsnu"]
 [ext_resource type="PackedScene" uid="uid://ewuyx4w4xa8c" path="res://assets/models/environment/vistas/vistas.tscn" id="14_we8yk"]
-[ext_resource type="PackedScene" uid="uid://dv5unnh4ewgjq" path="res://assets/models/platforms/hand/hand.tscn" id="15_ktsnu"]
-[ext_resource type="PackedScene" uid="uid://cgfw1gy2rno4n" path="res://assets/models/platforms/fist/fist.tscn" id="16_u180l"]
+[ext_resource type="PackedScene" uid="uid://cfgvmk43om2kb" path="res://src/common/player_reseter/player_reseter.tscn" id="15_ktsnu"]
 [ext_resource type="PackedScene" uid="uid://v2q5h44l70oq" path="res://assets/models/environment/door/door.tscn" id="18_we8yk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8bpti"]
 size = Vector3(3.98071, 5.2832, 7.18915)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u180l"]
+size = Vector3(100, 1, 100)
 
 [node name="Test_Level_PSX" type="Node3D"]
 
@@ -176,6 +177,20 @@ light_energy = 3.0
 omni_range = 10.0
 omni_attenuation = 0.5
 
+[node name="OmniLight3D14" type="OmniLight3D" parent="Environment/RoomWithHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31, 1.67369, -13)
+light_color = Color(1, 0.61, 0.61, 1)
+light_energy = 2.0
+omni_range = 10.0
+omni_attenuation = 0.5
+
+[node name="OmniLight3D15" type="OmniLight3D" parent="Environment/RoomWithHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 1.67369, -15.8)
+light_color = Color(1, 0.61, 0.61, 1)
+light_energy = 3.0
+omni_range = 10.0
+omni_attenuation = 0.5
+
 [node name="OmniLight3D13" type="OmniLight3D" parent="Environment/RoomWithHole"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.67369, -4)
 light_energy = 3.0
@@ -272,41 +287,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, -0
 [node name="Barrier22" parent="Environment/RoomWithHole" instance=ExtResource("4_qif8t")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, -0.8, -2)
 
-[node name="PlatformHand4" type="MeshInstance3D" parent="Environment/RoomWithHole"]
-transform = Transform3D(-5.54268, 0, -4.40506e-07, -4.84556e-07, -2.20253e-07, 5.0388, -2.11806e-14, 5.0388, 2.20253e-07, -4.2, -0.2, -6.2)
-mesh = ExtResource("14_ktsnu")
-skeleton = NodePath("../../..")
-
-[node name="Hand" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0, -14)
-activated = true
-
-[node name="Marker3D" type="Marker3D" parent="Environment/RoomWithHole/Hand"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-top_level = true
-
-[node name="Hand3" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -7)
-time_to_move = 3.0
-activated = true
-
-[node name="Marker3D" type="Marker3D" parent="Environment/RoomWithHole/Hand3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -4)
-top_level = true
-
-[node name="Hand4" parent="Environment/RoomWithHole" instance=ExtResource("15_ktsnu")]
-transform = Transform3D(-1, -1.74846e-07, 8.74228e-08, -1.74846e-07, 1, 7.64274e-15, -8.74228e-08, -7.64275e-15, -1, 1.38402, -0.42331, -17.6519)
-
-[node name="StaticBody3D" parent="Environment/RoomWithHole" instance=ExtResource("16_u180l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3872, -5, -10.3248)
-time_to_move = 5.0
-time_to_wait = 1.0
-activated = true
-
-[node name="Marker3D" type="Marker3D" parent="Environment/RoomWithHole/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3872, -5, -4.3248)
-top_level = true
-
 [node name="RedCorridors" type="Node3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
 
@@ -392,11 +372,86 @@ transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -19, 0, 
 [node name="WallConcrete29" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
 transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -19, 0, -5)
 
+[node name="WallConcrete50" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -21, 0, -7)
+
+[node name="WallConcrete53" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -25, 0, -7)
+
+[node name="WallConcrete55" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -29, 0, -7)
+
+[node name="WallConcrete56" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -33, 0, -7)
+
+[node name="WallConcrete57" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -33, 0, -3)
+
+[node name="WallConcrete60" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -37, 0, -7)
+
+[node name="WallConcrete61" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -37, 0, -3)
+
+[node name="WallConcrete62" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -41, 0, -7)
+
+[node name="WallConcrete63" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -41, 0, -3)
+
+[node name="WallConcrete64" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -45, 0, -7)
+
+[node name="WallConcrete65" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -45, 0, -3)
+
+[node name="WallConcrete59" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -47, 0, -5)
+
+[node name="WallConcrete58" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -29, 0, -3)
+
+[node name="WallConcrete54" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1, 0, 1.58932e-08, 0, 1, 0, -1.58932e-08, 0, -1, -25, 0, 1)
+
+[node name="WallConcrete49" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -15, 0, -5)
+
+[node name="WallConcrete48" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(1, 0, -1.03316e-07, 0, 1, 0, 1.03316e-07, 0, 1, -17, 0, -7)
+
 [node name="WallConcrete30" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
 transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -19, 0, 3)
 
 [node name="WallConcrete38" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
 transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -19, 0, 7)
+
+[node name="WallConcrete40" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -15, 0, 3)
+
+[node name="WallConcrete41" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -15, 0, 7)
+
+[node name="WallConcrete42" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -15, 0, 11)
+
+[node name="WallConcrete43" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(1, 0, -1.03316e-07, 0, 1, 0, 1.03316e-07, 0, 1, -17, 0, 13)
+
+[node name="WallConcrete44" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(1, 0, -1.03316e-07, 0, 1, 0, 1.03316e-07, 0, 1, -21, 0, 13)
+
+[node name="WallConcrete45" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1.47027e-07, 0, -1, 0, 1, 0, 1, 0, -1.47027e-07, -23, 0, 11)
+
+[node name="WallConcrete46" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1.47027e-07, 0, -1, 0, 1, 0, 1, 0, -1.47027e-07, -23, 0, 7)
+
+[node name="WallConcrete47" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1.47027e-07, 0, -1, 0, 1, 0, 1, 0, -1.47027e-07, -23, 0, 3)
+
+[node name="WallConcrete51" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(-1.47027e-07, 0, -1, 0, 1, 0, 1, 0, -1.47027e-07, -27, 0, -1)
 
 [node name="WallConcrete36" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
 transform = Transform3D(2.78182e-08, 0, -1, 0, 1, 0, 1, 0, 2.78182e-08, -20, 0, 3)
@@ -406,6 +461,9 @@ transform = Transform3D(2.78182e-08, 0, -1, 0, 1, 0, 1, 0, 2.78182e-08, -20, 0, 
 
 [node name="WallConcrete37" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
 transform = Transform3D(2.78182e-08, 0, -1, 0, 1, 0, 1, 0, 2.78182e-08, -20, 0, -1)
+
+[node name="WallConcrete52" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(2.78182e-08, 0, -1, 0, 1, 0, 1, 0, 2.78182e-08, -20, 0, -5)
 
 [node name="WallConcrete32" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
 transform = Transform3D(0.25, 0, -7.45058e-09, 0, 0.25, 0, 7.45058e-09, 0, 0.25, -19.5, 0, 9)
@@ -461,6 +519,24 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7, 0,
 [node name="BumperHorizontal10" parent="Environment/RedCorridors" instance=ExtResource("5_ltr1g")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0, 1)
 
+[node name="BumperHorizontal12" parent="Environment/RedCorridors" instance=ExtResource("5_ltr1g")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -15.2, 0, -5)
+
+[node name="BumperHorizontal13" parent="Environment/RedCorridors" instance=ExtResource("5_ltr1g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.2, 0, 5)
+
+[node name="BumperHorizontal14" parent="Environment/RedCorridors" instance=ExtResource("5_ltr1g")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -15.2, 0, 11)
+
+[node name="BumperHorizontal15" parent="Environment/RedCorridors" instance=ExtResource("5_ltr1g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23, 0, 11)
+
+[node name="BumperHorizontal16" parent="Environment/RedCorridors" instance=ExtResource("5_ltr1g")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23, 0, 3)
+
+[node name="BumperHorizontal17" parent="Environment/RedCorridors" instance=ExtResource("5_ltr1g")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20, 0, -5)
+
 [node name="FloorGrating14" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
 
@@ -506,6 +582,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 3)
 [node name="FloorGrating29" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -1)
 
+[node name="FloorGrating31" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -5)
+
+[node name="FloorGrating33" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, -5)
+
+[node name="FloorGrating34" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 0, -5)
+
+[node name="FloorGrating35" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -5)
+
+[node name="FloorGrating36" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0, -5)
+
+[node name="FloorGrating37" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45, 0, -5)
+
+[node name="FloorGrating32" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -1)
+
+[node name="FloorGrating30" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -5)
+
 [node name="FloorGrating23" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -5)
 
@@ -527,6 +627,9 @@ affected_objects = [NodePath("../Door")]
 
 [node name="Door" parent="Environment/RedCorridors" instance=ExtResource("18_we8yk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.7, 0, -1)
+
+[node name="Door2" parent="Environment/RedCorridors" instance=ExtResource("18_we8yk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27, 0, -5)
 
 [node name="Vistas" parent="." instance=ExtResource("14_we8yk")]
 
@@ -614,12 +717,38 @@ metadata/_edit_group_ = true
 shape = SubResource("BoxShape3D_8bpti")
 
 [node name="CameraArea4" parent="CameraManager/Camera5" instance=ExtResource("7_dhkdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.7551, 1, -6.96031)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.1169, 1, 1.33452)
 top_level = true
 metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera5/CameraArea4"]
 shape = SubResource("BoxShape3D_8bpti")
 
+[node name="Camera6" type="Camera3D" parent="CameraManager"]
+transform = Transform3D(0.050986, -0.0529897, 0.997293, 0.0227938, 0.998393, 0.0518829, -0.998439, 0.0200868, 0.0521119, -30.2, 3.7, -7.8)
+fov = 50.0
+far = 1000.0
+
+[node name="CameraArea3" parent="CameraManager/Camera6" instance=ExtResource("7_dhkdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9551, 1, -6.96031)
+top_level = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera6/CameraArea3"]
+shape = SubResource("BoxShape3D_8bpti")
+
 [node name="Player" parent="." instance=ExtResource("8_do65p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 8)
+
+[node name="Terminal" parent="." node_paths=PackedStringArray("affected_objects") instance=ExtResource("13_ktsnu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -37, 2, -7)
+affected_objects = [NodePath("../Environment/RedCorridors/Door2")]
+
+[node name="PlayerReseter" parent="." instance=ExtResource("15_ktsnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -6, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerReseter"]
+shape = SubResource("BoxShape3D_u180l")
+
+[node name="Marker3D" type="Marker3D" parent="PlayerReseter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 8, 10)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://4briuvjan27m"]
+[gd_scene load_steps=20 format=3 uid="uid://4briuvjan27m"]
 
 [ext_resource type="PackedScene" uid="uid://ewuyx4w4xa8c" path="res://assets/models/environment/vistas/vistas.tscn" id="1_67n0k"]
 [ext_resource type="PackedScene" uid="uid://dbjbhgqob1wnv" path="res://assets/models/environment/vistas/vfx.tscn" id="2_opvpr"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://487a24dc1237" path="res://scripts/levels/level1/teleport_to_next_level.gd" id="11_opvpr"]
 [ext_resource type="Script" uid="uid://dinle0x3fchju" path="res://scripts/camera_manager.gd" id="12_jqqrh"]
 [ext_resource type="PackedScene" uid="uid://d0v6l6lpqckgm" path="res://src/camera_area.tscn" id="13_xt4h6"]
+[ext_resource type="PackedScene" uid="uid://cfgvmk43om2kb" path="res://src/common/player_reseter/player_reseter.tscn" id="15_jqdp7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibmqn"]
 size = Vector3(4.6, 1, 10.4)
@@ -23,6 +24,9 @@ size = Vector3(4.6, 1, 10.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_opvpr"]
 size = Vector3(4.6, 1, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1raiy"]
+size = Vector3(100, 1, 100)
 
 [node name="Level1" type="Node3D"]
 
@@ -125,9 +129,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 0, 2)
 top_level = true
 
 [node name="Walls" type="Node3D" parent="Environment"]
-
-[node name="WallConcrete" parent="Environment/Walls" instance=ExtResource("6_315dt")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0)
 
 [node name="WallConcrete5" parent="Environment/Walls" instance=ExtResource("6_315dt")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 2.12132, 0, -1.87868)
@@ -435,6 +436,7 @@ type = "Activate"
 
 [node name="TeleportToNextLevel" type="AnimatableBody3D" parent="Environment/Interactables/Terminal"]
 script = ExtResource("11_opvpr")
+next_level = "res://src/levels/test_level_psx.tscn"
 metadata/_custom_type_script = "uid://64y5n3uq1bt"
 
 [node name="Door" parent="Environment/Interactables/Terminal" instance=ExtResource("10_kgybs")]
@@ -479,5 +481,14 @@ top_level = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CameraManager/Camera3D3/CameraArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.6, -0.2, -0.4)
 shape = SubResource("BoxShape3D_opvpr")
+
+[node name="PlayerReseter" parent="." instance=ExtResource("15_jqdp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -6, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerReseter"]
+shape = SubResource("BoxShape3D_1raiy")
+
+[node name="Marker3D" type="Marker3D" parent="PlayerReseter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 8, 2)
 
 [editable path="VFX"]

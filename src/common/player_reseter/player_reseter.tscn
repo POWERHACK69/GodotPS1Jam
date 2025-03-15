@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfgvmk43om2kb"]
+
+[ext_resource type="Script" uid="uid://cgri367k3uuxk" path="res://src/common/player_reseter/player_reseter.gd" id="1_4uh6w"]
+
+[node name="PlayerReseter" type="Area3D"]
+script = ExtResource("1_4uh6w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
