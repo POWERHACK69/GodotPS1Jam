@@ -473,6 +473,30 @@ transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -19, 0, 
 [node name="WallConcrete30" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
 transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -19, 0, 3)
 
+[node name="WallConcrete38" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(5.96046e-08, 0, 1, 0, 1, 0, -1, 0, 5.96046e-08, -19, 0, 7)
+
+[node name="WallConcrete36" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(2.78182e-08, 0, -1, 0, 1, 0, 1, 0, 2.78182e-08, -20, 0, 3)
+
+[node name="WallConcrete39" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(2.78182e-08, 0, -1, 0, 1, 0, 1, 0, 2.78182e-08, -20, 0, 7)
+
+[node name="WallConcrete37" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(2.78182e-08, 0, -1, 0, 1, 0, 1, 0, 2.78182e-08, -20, 0, -1)
+
+[node name="WallConcrete32" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(0.25, 0, -7.45058e-09, 0, 0.25, 0, 7.45058e-09, 0, 0.25, -19.5, 0, 9)
+
+[node name="WallConcrete33" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(0.25, 0, -7.45058e-09, 0, 0.25, 0, 7.45058e-09, 0, 0.25, -19.5, 2, 9)
+
+[node name="WallConcrete34" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(0.25, 0, -7.45058e-09, 0, 0.25, 0, 7.45058e-09, 0, 0.25, -19.5, 3, 9)
+
+[node name="WallConcrete35" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
+transform = Transform3D(0.25, 0, -7.45058e-09, 0, 0.25, 0, 7.45058e-09, 0, 0.25, -19.5, 1, 9)
+
 [node name="WallConcrete25" parent="Environment/RedCorridors" instance=ExtResource("7_8bpti")]
 transform = Transform3D(-1, 0, 5.76205e-08, 0, 1, 0, -5.76205e-08, 0, -1, -9, 0, 1)
 
@@ -541,6 +565,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -1)
 
 [node name="FloorGrating22" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 3)
+
+[node name="FloorGrating25" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 7)
+
+[node name="FloorGrating24" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 11)
+
+[node name="FloorGrating26" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 11)
+
+[node name="FloorGrating27" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 7)
+
+[node name="FloorGrating28" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, 3)
+
+[node name="FloorGrating29" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -1)
 
 [node name="FloorGrating23" parent="Environment/RedCorridors" instance=ExtResource("1_cagvy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -5)
@@ -1908,7 +1950,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 shape = SubResource("BoxShape3D_8bpti")
 
 [node name="Camera5" type="Camera3D" parent="CameraManager"]
-transform = Transform3D(-0.0509859, 0.0529898, -0.997293, -0.236398, 0.969573, 0.0636026, 0.970318, 0.239, -0.0369079, -30.2, 2.1, 3.6)
+transform = Transform3D(-0.0509859, 0.0529897, -0.997293, -0.236398, 0.969572, 0.0636025, 0.970318, 0.239001, -0.0369078, -30.2, 2.1, 5.6)
 fov = 50.0
 far = 1000.0
 

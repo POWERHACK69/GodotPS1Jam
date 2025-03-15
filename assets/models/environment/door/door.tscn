@@ -257,7 +257,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 2.9, 4.47035e-08)
 
 [node name="DoorL" type="MeshInstance3D" parent="RootDoorL" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, -1.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 1.4, -1.9, 0)
 material_override = ExtResource("3_6211t")
 mesh = ExtResource("4_fl0ev")
 skeleton = NodePath("../..")
@@ -281,7 +281,7 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 2.9, 0)
 
 [node name="DoorR" type="MeshInstance3D" parent="RootDoorR" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, -1.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, -1.4, -1.9, 0)
 material_override = ExtResource("3_6211t")
 mesh = ExtResource("5_og5ow")
 skeleton = NodePath("../..")
