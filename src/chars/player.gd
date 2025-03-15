@@ -32,10 +32,10 @@ func _process(delta):
 	if not interacting:
 		if Input.is_action_pressed("forward"):
 			input_dir.z += 1
-			footstep_sound()
+			#footstep_sound()
 		if Input.is_action_pressed("backward"):
 			input_dir.z -= 0.5
-			footstep_sound()
+			#footstep_sound()
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
 			input_dir.y += 1.3
 			animation_tree.set("parameters/Jumping/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
@@ -61,7 +61,7 @@ func _process(delta):
 	# Forwards and backwards animation
 	var velocity_rotated = velocity * global_basis
 	#print(velocity_rotated)
-	var blended_amount = lerpf(animation_tree.get("parameters/Blend3/blend_amount"), velocity_rotated.z * 0.2, 0.1)
+	var blended_amount = lerpf(animation_tree.get("parameters/Blend3/blend_amount"), roundf(clampf(velocity_rotated.z, -1.0, 1.0)), 0.9)
 	animation_tree.set("parameters/Blend3/blend_amount", blended_amount)
 	animation_tree.set("parameters/RunBlend/blend_amount", clampf(velocity_rotated.z * 0.25, 0.0, 1.0))
 	animation_tree.set("parameters/ForwardSpeed/scale", maxf(1.0, velocity_rotated.z * 0.5))
