@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var animation_tree := $AnimationTree
 
 var is_pause_menu_open : bool = false
+var platform_velocity : Vector3 = Vector3.ZERO
 
 var interacting: bool = false
 
@@ -50,8 +51,14 @@ func _process(delta):
 				$Area3D/CollisionShape3D.disabled = false
 				await get_tree().create_timer(0.2).timeout
 				$Area3D/CollisionShape3D.disabled = true
-
 	
+		# Moves with the platform
+		if is_on_floor():
+			var collision = get_last_slide_collision()
+			if collision:
+				var collider = collision.get_collider()
+				if collider and collider.is_in_group("platforms"):
+					global_transform.origin += collider.delta_position
 	
 	velocity += transform.basis * (input_dir * move_speed)
 	velocity.y -= gravity * delta
