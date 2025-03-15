@@ -81,6 +81,10 @@ func _process(delta):
 		animation_tree.set("parameters/Falling/blend_amount", 0.0)
 	
 	move_and_slide()
+	
+	$Shadow.visible = $ShadowCast.is_colliding()
+	if $ShadowCast.is_colliding():
+		$Shadow.global_position = $ShadowCast.get_collision_point() + Vector3(0,0.1,0)
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("terminal"):
