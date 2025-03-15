@@ -17,8 +17,8 @@ shader_parameter/uv_pan_velocity = Vector2(0, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_kvhxb"]
 size = Vector2(4, 4.4)
-subdivide_width = 1
-subdivide_depth = 1
+subdivide_width = 2
+subdivide_depth = 2
 
 [node name="WallConcrete" type="StaticBody3D"]
 

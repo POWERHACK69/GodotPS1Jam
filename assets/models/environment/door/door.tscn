@@ -1,18 +1,17 @@
-[gd_scene load_steps=23 format=3 uid="uid://v2q5h44l70oq"]
+[gd_scene load_steps=20 format=3 uid="uid://v2q5h44l70oq"]
 
 [ext_resource type="ArrayMesh" uid="uid://cxeq7s7myhrcm" path="res://assets/models/environment/door/DoorFrame.res" id="1_dy6y1"]
 [ext_resource type="PackedScene" uid="uid://plttrje0on65" path="res://src/environment_body_3d.tscn" id="1_r12xi"]
 [ext_resource type="ArrayMesh" uid="uid://uuyinsfjef76" path="res://assets/models/environment/door/CircleR.res" id="2_eucfe"]
 [ext_resource type="Script" uid="uid://bc2aplnb1s80e" path="res://assets/models/environment/door/door.gd" id="2_vytdj"]
+[ext_resource type="Material" uid="uid://xmjfjbbjooq" path="res://assets/models/environment/door/door.material" id="3_6211t"]
 [ext_resource type="ArrayMesh" uid="uid://d3abxc45yefrq" path="res://assets/models/environment/door/CircleL.res" id="3_og5ow"]
 [ext_resource type="ArrayMesh" uid="uid://x6xbqgf10sqx" path="res://assets/models/environment/door/DoorL.res" id="4_fl0ev"]
-[ext_resource type="Shader" uid="uid://be8ldcl6osvtp" path="res://addons/godot_psx_style_demo/shaders/psx_lit.gdshader" id="4_rpwdt"]
 [ext_resource type="ArrayMesh" uid="uid://cxmmi1srpb3i4" path="res://assets/models/environment/door/DoorR.res" id="5_og5ow"]
 [ext_resource type="ArrayMesh" uid="uid://chgt7r1qxdvle" path="res://assets/models/environment/door/PipeBL.res" id="6_fl0ev"]
 [ext_resource type="Material" uid="uid://cmt40eeqase3y" path="res://assets/models/environment/bumper_horizontal/bumper.material" id="7_jhhlp"]
 [ext_resource type="ArrayMesh" uid="uid://hnyb1782anoq" path="res://assets/models/environment/door/PipeTL.res" id="7_qvmem"]
 [ext_resource type="ArrayMesh" uid="uid://dct1t36xfd8t8" path="res://assets/models/environment/door/PipeBR.res" id="8_dmjbe"]
-[ext_resource type="Material" uid="uid://c5ooor6elmjv2" path="res://assets/models/environment/door/pipe.material" id="9_4j776"]
 [ext_resource type="ArrayMesh" uid="uid://dnce65v6c1gk5" path="res://assets/models/environment/door/PipeTR.res" id="9_r12xi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vytdj"]
@@ -21,24 +20,8 @@ size = Vector3(1, 3, 0.8)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4j776"]
 size = Vector3(1, 4, 0.8)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6211t"]
-render_priority = 0
-shader = ExtResource("4_rpwdt")
-shader_parameter/modulate_color = Color(1, 1, 1, 1)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/uv_pan_velocity = Vector2(0, 0)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_jhhlp"]
 size = Vector3(1, 3, 0.4)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v076s"]
-render_priority = 0
-shader = ExtResource("4_rpwdt")
-shader_parameter/modulate_color = Color(1, 1, 1, 1)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
-shader_parameter/uv_pan_velocity = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_vytdj"]
 length = 3.6
@@ -266,6 +249,7 @@ shape = SubResource("BoxShape3D_4j776")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 7.45058e-09)
 
 [node name="DoorFrame" type="MeshInstance3D" parent="RootDoorFrame" index="0"]
+material_override = ExtResource("3_6211t")
 mesh = ExtResource("1_dy6y1")
 skeleton = NodePath("../..")
 
@@ -274,7 +258,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 2.9, 4.47035e-08)
 
 [node name="DoorL" type="MeshInstance3D" parent="RootDoorL" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, -1.9, 0)
-material_override = SubResource("ShaderMaterial_6211t")
+material_override = ExtResource("3_6211t")
 mesh = ExtResource("4_fl0ev")
 skeleton = NodePath("../..")
 
@@ -289,7 +273,7 @@ shape = SubResource("BoxShape3D_jhhlp")
 transform = Transform3D(-1, 2.53518e-06, 0, -2.53518e-06, -1, 0, 0, 0, 1, 1.9, -1.5, -4.47035e-08)
 
 [node name="CircleL" type="MeshInstance3D" parent="RootDoorL/RootCircleL" index="0"]
-material_override = ExtResource("9_4j776")
+material_override = ExtResource("3_6211t")
 mesh = ExtResource("3_og5ow")
 skeleton = NodePath("../../..")
 
@@ -298,7 +282,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 2.9, 0)
 
 [node name="DoorR" type="MeshInstance3D" parent="RootDoorR" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, -1.9, 0)
-material_override = SubResource("ShaderMaterial_v076s")
+material_override = ExtResource("3_6211t")
 mesh = ExtResource("5_og5ow")
 skeleton = NodePath("../..")
 
@@ -321,7 +305,7 @@ skeleton = NodePath("../../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.4, 0)
 
 [node name="PipeBl" type="MeshInstance3D" parent="RootPipeBl" index="0"]
-material_override = ExtResource("9_4j776")
+material_override = ExtResource("3_6211t")
 mesh = ExtResource("6_fl0ev")
 skeleton = NodePath("../..")
 
@@ -330,7 +314,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 2.4, 0)
 
 [node name="PipeTl" type="MeshInstance3D" parent="RootPipeTl" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
-material_override = ExtResource("9_4j776")
+material_override = ExtResource("3_6211t")
 mesh = ExtResource("7_qvmem")
 skeleton = NodePath("../..")
 
@@ -338,7 +322,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.4, 0)
 
 [node name="PipeBr" type="MeshInstance3D" parent="RootPipeBr" index="0"]
-material_override = ExtResource("9_4j776")
+material_override = ExtResource("3_6211t")
 mesh = ExtResource("8_dmjbe")
 skeleton = NodePath("../..")
 
@@ -347,7 +331,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 2.4, 0.1)
 
 [node name="PipeTr" type="MeshInstance3D" parent="RootPipeTr" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, -0.1)
-material_override = ExtResource("9_4j776")
+material_override = ExtResource("3_6211t")
 mesh = ExtResource("9_r12xi")
 skeleton = NodePath("../..")
 
