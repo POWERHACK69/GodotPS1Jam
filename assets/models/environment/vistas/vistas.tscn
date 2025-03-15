@@ -1,0 +1,1325 @@
+[gd_scene load_steps=12 format=3 uid="uid://ewuyx4w4xa8c"]
+
+[ext_resource type="PackedScene" uid="uid://clnso0snqxgyp" path="res://assets/models/environment/city_tile/city_tile.tscn" id="1_fo1ff"]
+[ext_resource type="Shader" uid="uid://bbusoxutr5iuv" path="res://addons/shaders/psx_water.gdshader" id="2_jvmkw"]
+
+[sub_resource type="Gradient" id="Gradient_fu3tp"]
+colors = PackedColorArray(0.2583, 0.34932, 0.41, 1, 0.1881, 0.28743, 0.33, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m4mu5"]
+frequency = 0.0198
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7hw1t"]
+width = 128
+height = 128
+seamless = true
+color_ramp = SubResource("Gradient_fu3tp")
+noise = SubResource("FastNoiseLite_m4mu5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7hw1t"]
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ytddh"]
+width = 128
+height = 128
+seamless = true
+noise = SubResource("FastNoiseLite_7hw1t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytddh"]
+render_priority = 0
+shader = ExtResource("2_jvmkw")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ytddh")
+shader_parameter/wave_strength = 0.16
+shader_parameter/wave_scale = 0.115
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+shader_parameter/albedoTex = SubResource("NoiseTexture2D_7hw1t")
+shader_parameter/uv_scale = Vector2(20, 20)
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/uv_pan_velocity = Vector2(0.03, -0.045)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8bpti"]
+material = SubResource("ShaderMaterial_ytddh")
+size = Vector2(40, 40)
+subdivide_width = 40
+subdivide_depth = 40
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7hw1t"]
+shading_mode = 0
+disable_fog = true
+albedo_color = Color(0.2187, 0.24264, 0.27, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7hw1t"]
+size = Vector2(10000, 10000)
+
+[node name="Vistas" type="Node3D"]
+
+[node name="Ship" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9413, 0, 0)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Ship"]
+
+[node name="Panel7" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(-0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, -0.984808, -6.99382e-06, 0, 36)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel8" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(-0.996195, 0, -0.0871556, 0, 1, 0, 0.0871556, 0, -0.996195, -24, 0, 39)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel9" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -48, 0, 40)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel10" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -72, 0, 40)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel11" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(-0.996195, 0, 0.0871558, 0, 1, 0, -0.0871558, 0, -0.996195, -96, 0, 39)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel12" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(-0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, -0.984808, -120, 0, 36)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel13" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, -120, 0, -35.3333)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel14" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(0.996195, 0, 0.0871556, 0, 1, 0, -0.0871556, 0, 0.996195, -96, 0, -38.3333)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel15" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -72, 0, -39.3333)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel16" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -48, 0, -39.3333)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel17" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(0.996195, 0, -0.0871559, 0, 1, 0, 0.0871559, 0, 0.996195, -24, 0, -38.3333)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Panel18" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, 0, 0, -35.3333)
+size = Vector3(1, 1, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship/CSGCombiner3D/Panel18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+size = Vector3(20, 20, 2)
+
+[node name="Floor" type="CSGBox3D" parent="Ship/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62, 8, 0)
+size = Vector3(140, 2, 60)
+
+[node name="City" type="Node3D" parent="."]
+
+[node name="CityTile" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 2669)
+
+[node name="CityTile2" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 2669)
+
+[node name="CityTile3" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 2669)
+
+[node name="CityTile4" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 2669)
+
+[node name="CityTile5" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 2669)
+
+[node name="CityTile6" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 2669)
+
+[node name="CityTile7" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 2669)
+
+[node name="CityTile8" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 2669)
+
+[node name="CityTile9" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 2669)
+
+[node name="CityTile10" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 2669)
+
+[node name="CityTile11" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 2669)
+
+[node name="CityTile12" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 2669)
+
+[node name="CityTile13" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 2669)
+
+[node name="CityTile14" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 2669)
+
+[node name="CityTile15" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 2669)
+
+[node name="CityTile16" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 2669)
+
+[node name="CityTile17" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 2269)
+
+[node name="CityTile18" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 2269)
+
+[node name="CityTile19" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 2269)
+
+[node name="CityTile20" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 2269)
+
+[node name="CityTile21" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 2269)
+
+[node name="CityTile22" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 2269)
+
+[node name="CityTile23" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 2269)
+
+[node name="CityTile24" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 2269)
+
+[node name="CityTile25" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 2269)
+
+[node name="CityTile26" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 2269)
+
+[node name="CityTile27" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 2269)
+
+[node name="CityTile28" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 2269)
+
+[node name="CityTile29" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 2269)
+
+[node name="CityTile30" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 2269)
+
+[node name="CityTile31" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 2269)
+
+[node name="CityTile32" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 2269)
+
+[node name="CityTile33" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 2269)
+
+[node name="CityTile34" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 2269)
+
+[node name="CityTile35" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 2269)
+
+[node name="CityTile36" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 2269)
+
+[node name="CityTile37" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 2269)
+
+[node name="CityTile38" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 2269)
+
+[node name="CityTile39" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 2269)
+
+[node name="CityTile40" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 2269)
+
+[node name="CityTile41" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 2269)
+
+[node name="CityTile42" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 2269)
+
+[node name="CityTile43" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 2269)
+
+[node name="CityTile44" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 2269)
+
+[node name="CityTile45" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 2269)
+
+[node name="CityTile46" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 2269)
+
+[node name="CityTile47" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 2269)
+
+[node name="CityTile48" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 2269)
+
+[node name="CityTile49" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 1869)
+
+[node name="CityTile50" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 1869)
+
+[node name="CityTile51" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 1869)
+
+[node name="CityTile52" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 1869)
+
+[node name="CityTile53" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 1869)
+
+[node name="CityTile54" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 1869)
+
+[node name="CityTile55" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 1869)
+
+[node name="CityTile56" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 1869)
+
+[node name="CityTile57" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 1869)
+
+[node name="CityTile58" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 1869)
+
+[node name="CityTile59" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 1869)
+
+[node name="CityTile60" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 1869)
+
+[node name="CityTile61" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 1869)
+
+[node name="CityTile62" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 1869)
+
+[node name="CityTile63" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 1869)
+
+[node name="CityTile64" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 1869)
+
+[node name="CityTile65" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 1469)
+
+[node name="CityTile66" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 1469)
+
+[node name="CityTile67" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 1469)
+
+[node name="CityTile68" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 1469)
+
+[node name="CityTile69" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 1469)
+
+[node name="CityTile70" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 1469)
+
+[node name="CityTile71" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 1469)
+
+[node name="CityTile72" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 1469)
+
+[node name="CityTile73" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 1469)
+
+[node name="CityTile74" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 1469)
+
+[node name="CityTile75" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 1469)
+
+[node name="CityTile76" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 1469)
+
+[node name="CityTile77" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 1469)
+
+[node name="CityTile78" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 1469)
+
+[node name="CityTile79" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 1469)
+
+[node name="CityTile80" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 1469)
+
+[node name="CityTile81" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 1469)
+
+[node name="CityTile82" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 1469)
+
+[node name="CityTile83" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 1469)
+
+[node name="CityTile84" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 1469)
+
+[node name="CityTile85" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 1469)
+
+[node name="CityTile86" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 1469)
+
+[node name="CityTile87" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 1469)
+
+[node name="CityTile88" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 1469)
+
+[node name="CityTile89" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 1469)
+
+[node name="CityTile90" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 1469)
+
+[node name="CityTile91" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 1469)
+
+[node name="CityTile92" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 1469)
+
+[node name="CityTile93" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 1469)
+
+[node name="CityTile94" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 1469)
+
+[node name="CityTile95" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 1469)
+
+[node name="CityTile96" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 1469)
+
+[node name="CityTile97" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 1069)
+
+[node name="CityTile98" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 1069)
+
+[node name="CityTile99" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 1069)
+
+[node name="CityTile100" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 1069)
+
+[node name="CityTile101" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 1069)
+
+[node name="CityTile102" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 1069)
+
+[node name="CityTile103" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 1069)
+
+[node name="CityTile104" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 1069)
+
+[node name="CityTile105" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 1069)
+
+[node name="CityTile106" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 1069)
+
+[node name="CityTile107" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 1069)
+
+[node name="CityTile108" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 1069)
+
+[node name="CityTile109" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 1069)
+
+[node name="CityTile110" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 1069)
+
+[node name="CityTile111" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 1069)
+
+[node name="CityTile112" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 1069)
+
+[node name="CityTile113" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 669)
+
+[node name="CityTile114" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 669)
+
+[node name="CityTile115" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 669)
+
+[node name="CityTile116" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 669)
+
+[node name="CityTile117" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 669)
+
+[node name="CityTile118" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 669)
+
+[node name="CityTile119" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 669)
+
+[node name="CityTile120" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 669)
+
+[node name="CityTile121" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 669)
+
+[node name="CityTile122" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 669)
+
+[node name="CityTile123" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 669)
+
+[node name="CityTile124" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 669)
+
+[node name="CityTile125" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 669)
+
+[node name="CityTile126" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 669)
+
+[node name="CityTile127" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 669)
+
+[node name="CityTile128" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 669)
+
+[node name="CityTile129" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 669)
+
+[node name="CityTile130" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 669)
+
+[node name="CityTile131" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 669)
+
+[node name="CityTile132" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 669)
+
+[node name="CityTile133" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 669)
+
+[node name="CityTile134" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 669)
+
+[node name="CityTile135" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 669)
+
+[node name="CityTile136" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 669)
+
+[node name="CityTile137" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 669)
+
+[node name="CityTile138" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 669)
+
+[node name="CityTile139" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 669)
+
+[node name="CityTile140" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 669)
+
+[node name="CityTile141" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 669)
+
+[node name="CityTile142" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 669)
+
+[node name="CityTile143" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 669)
+
+[node name="CityTile144" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 669)
+
+[node name="CityTile145" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, 269)
+
+[node name="CityTile146" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, 269)
+
+[node name="CityTile147" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, 269)
+
+[node name="CityTile148" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, 269)
+
+[node name="CityTile149" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, 269)
+
+[node name="CityTile150" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, 269)
+
+[node name="CityTile151" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, 269)
+
+[node name="CityTile152" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, 269)
+
+[node name="CityTile153" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, 269)
+
+[node name="CityTile154" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, 269)
+
+[node name="CityTile155" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, 269)
+
+[node name="CityTile156" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, 269)
+
+[node name="CityTile157" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, 269)
+
+[node name="CityTile158" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, 269)
+
+[node name="CityTile159" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, 269)
+
+[node name="CityTile160" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, 269)
+
+[node name="CityTile161" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -131)
+
+[node name="CityTile162" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -131)
+
+[node name="CityTile163" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -131)
+
+[node name="CityTile164" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -131)
+
+[node name="CityTile165" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -131)
+
+[node name="CityTile166" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -131)
+
+[node name="CityTile167" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -131)
+
+[node name="CityTile168" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -131)
+
+[node name="CityTile169" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -131)
+
+[node name="CityTile170" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -131)
+
+[node name="CityTile171" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -131)
+
+[node name="CityTile172" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -131)
+
+[node name="CityTile173" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -131)
+
+[node name="CityTile174" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -131)
+
+[node name="CityTile175" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -131)
+
+[node name="CityTile176" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -131)
+
+[node name="CityTile177" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -131)
+
+[node name="CityTile178" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -131)
+
+[node name="CityTile179" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -131)
+
+[node name="CityTile180" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -131)
+
+[node name="CityTile181" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -131)
+
+[node name="CityTile182" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -131)
+
+[node name="CityTile183" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -131)
+
+[node name="CityTile184" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -131)
+
+[node name="CityTile185" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -131)
+
+[node name="CityTile186" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -131)
+
+[node name="CityTile187" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -131)
+
+[node name="CityTile188" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -131)
+
+[node name="CityTile189" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -131)
+
+[node name="CityTile190" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -131)
+
+[node name="CityTile191" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -131)
+
+[node name="CityTile192" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -131)
+
+[node name="CityTile193" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -531)
+
+[node name="CityTile194" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -531)
+
+[node name="CityTile195" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -531)
+
+[node name="CityTile196" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -531)
+
+[node name="CityTile197" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -531)
+
+[node name="CityTile198" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -531)
+
+[node name="CityTile199" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -531)
+
+[node name="CityTile200" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -531)
+
+[node name="CityTile201" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -531)
+
+[node name="CityTile202" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -531)
+
+[node name="CityTile203" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -531)
+
+[node name="CityTile204" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -531)
+
+[node name="CityTile205" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -531)
+
+[node name="CityTile206" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -531)
+
+[node name="CityTile207" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -531)
+
+[node name="CityTile208" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -531)
+
+[node name="CityTile209" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -931)
+
+[node name="CityTile210" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -931)
+
+[node name="CityTile211" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -931)
+
+[node name="CityTile212" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -931)
+
+[node name="CityTile213" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -931)
+
+[node name="CityTile214" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -931)
+
+[node name="CityTile215" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -931)
+
+[node name="CityTile216" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -931)
+
+[node name="CityTile217" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -931)
+
+[node name="CityTile218" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -931)
+
+[node name="CityTile219" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -931)
+
+[node name="CityTile220" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -931)
+
+[node name="CityTile221" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -931)
+
+[node name="CityTile222" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -931)
+
+[node name="CityTile223" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -931)
+
+[node name="CityTile224" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -931)
+
+[node name="CityTile225" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -931)
+
+[node name="CityTile226" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -931)
+
+[node name="CityTile227" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -931)
+
+[node name="CityTile228" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -931)
+
+[node name="CityTile229" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -931)
+
+[node name="CityTile230" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -931)
+
+[node name="CityTile231" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -931)
+
+[node name="CityTile232" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -931)
+
+[node name="CityTile233" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -931)
+
+[node name="CityTile234" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -931)
+
+[node name="CityTile235" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -931)
+
+[node name="CityTile236" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -931)
+
+[node name="CityTile237" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -931)
+
+[node name="CityTile238" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -931)
+
+[node name="CityTile239" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -931)
+
+[node name="CityTile240" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -931)
+
+[node name="CityTile241" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -1331)
+
+[node name="CityTile242" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -1331)
+
+[node name="CityTile243" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -1331)
+
+[node name="CityTile244" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -1331)
+
+[node name="CityTile245" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -1331)
+
+[node name="CityTile246" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -1331)
+
+[node name="CityTile247" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -1331)
+
+[node name="CityTile248" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -1331)
+
+[node name="CityTile249" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -1331)
+
+[node name="CityTile250" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -1331)
+
+[node name="CityTile251" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -1331)
+
+[node name="CityTile252" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -1331)
+
+[node name="CityTile253" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -1331)
+
+[node name="CityTile254" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -1331)
+
+[node name="CityTile255" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -1331)
+
+[node name="CityTile256" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -1331)
+
+[node name="CityTile257" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -1731)
+
+[node name="CityTile258" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -1731)
+
+[node name="CityTile259" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -1731)
+
+[node name="CityTile260" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -1731)
+
+[node name="CityTile261" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -1731)
+
+[node name="CityTile262" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -1731)
+
+[node name="CityTile263" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -1731)
+
+[node name="CityTile264" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -1731)
+
+[node name="CityTile265" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -1731)
+
+[node name="CityTile266" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -1731)
+
+[node name="CityTile267" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -1731)
+
+[node name="CityTile268" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -1731)
+
+[node name="CityTile269" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -1731)
+
+[node name="CityTile270" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -1731)
+
+[node name="CityTile271" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -1731)
+
+[node name="CityTile272" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -1731)
+
+[node name="CityTile273" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -1731)
+
+[node name="CityTile274" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -1731)
+
+[node name="CityTile275" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -1731)
+
+[node name="CityTile276" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -1731)
+
+[node name="CityTile277" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -1731)
+
+[node name="CityTile278" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -1731)
+
+[node name="CityTile279" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -1731)
+
+[node name="CityTile280" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -1731)
+
+[node name="CityTile281" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -1731)
+
+[node name="CityTile282" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -1731)
+
+[node name="CityTile283" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -1731)
+
+[node name="CityTile284" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -1731)
+
+[node name="CityTile285" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -1731)
+
+[node name="CityTile286" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -1731)
+
+[node name="CityTile287" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -1731)
+
+[node name="CityTile288" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -1731)
+
+[node name="CityTile289" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -2131)
+
+[node name="CityTile290" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -2131)
+
+[node name="CityTile291" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -2131)
+
+[node name="CityTile292" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -2131)
+
+[node name="CityTile293" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -2131)
+
+[node name="CityTile294" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -2131)
+
+[node name="CityTile295" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -2131)
+
+[node name="CityTile296" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -2131)
+
+[node name="CityTile297" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -2131)
+
+[node name="CityTile298" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -2131)
+
+[node name="CityTile299" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -2131)
+
+[node name="CityTile300" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -2131)
+
+[node name="CityTile301" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -2131)
+
+[node name="CityTile302" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -2131)
+
+[node name="CityTile303" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -2131)
+
+[node name="CityTile304" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -2131)
+
+[node name="CityTile305" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -2531)
+
+[node name="CityTile306" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -2531)
+
+[node name="CityTile307" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -2531)
+
+[node name="CityTile308" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -2531)
+
+[node name="CityTile309" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -2531)
+
+[node name="CityTile310" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -2531)
+
+[node name="CityTile311" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -2531)
+
+[node name="CityTile312" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -2531)
+
+[node name="CityTile313" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -2531)
+
+[node name="CityTile314" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -2531)
+
+[node name="CityTile315" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -2531)
+
+[node name="CityTile316" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -2531)
+
+[node name="CityTile317" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -2531)
+
+[node name="CityTile318" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -2531)
+
+[node name="CityTile319" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -2531)
+
+[node name="CityTile320" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -2531)
+
+[node name="CityTile321" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -2531)
+
+[node name="CityTile322" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -2531)
+
+[node name="CityTile323" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -2531)
+
+[node name="CityTile324" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -2531)
+
+[node name="CityTile325" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -2531)
+
+[node name="CityTile326" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -2531)
+
+[node name="CityTile327" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -2531)
+
+[node name="CityTile328" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -2531)
+
+[node name="CityTile329" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -2531)
+
+[node name="CityTile330" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -2531)
+
+[node name="CityTile331" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -2531)
+
+[node name="CityTile332" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -2531)
+
+[node name="CityTile333" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -2531)
+
+[node name="CityTile334" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -2531)
+
+[node name="CityTile335" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -2531)
+
+[node name="CityTile336" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -2531)
+
+[node name="CityTile337" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -2931)
+
+[node name="CityTile338" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -2931)
+
+[node name="CityTile339" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -2931)
+
+[node name="CityTile340" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -2931)
+
+[node name="CityTile341" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -2931)
+
+[node name="CityTile342" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -2931)
+
+[node name="CityTile343" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -2931)
+
+[node name="CityTile344" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -2931)
+
+[node name="CityTile345" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -2931)
+
+[node name="CityTile346" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -2931)
+
+[node name="CityTile347" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -2931)
+
+[node name="CityTile348" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -2931)
+
+[node name="CityTile349" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -2931)
+
+[node name="CityTile350" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -2931)
+
+[node name="CityTile351" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -2931)
+
+[node name="CityTile352" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -2931)
+
+[node name="CityTile353" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -3331)
+
+[node name="CityTile354" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -3331)
+
+[node name="CityTile355" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -3331)
+
+[node name="CityTile356" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -3331)
+
+[node name="CityTile357" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -3331)
+
+[node name="CityTile358" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -3331)
+
+[node name="CityTile359" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -3331)
+
+[node name="CityTile360" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -3331)
+
+[node name="CityTile361" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -3331)
+
+[node name="CityTile362" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -3331)
+
+[node name="CityTile363" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -3331)
+
+[node name="CityTile364" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -3331)
+
+[node name="CityTile365" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -3331)
+
+[node name="CityTile366" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -3331)
+
+[node name="CityTile367" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -3331)
+
+[node name="CityTile368" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -3331)
+
+[node name="CityTile369" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2829, 38, -3331)
+
+[node name="CityTile370" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2429, 38, -3331)
+
+[node name="CityTile371" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2029, 38, -3331)
+
+[node name="CityTile372" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1629, 38, -3331)
+
+[node name="CityTile373" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1229, 38, -3331)
+
+[node name="CityTile374" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 829, 38, -3331)
+
+[node name="CityTile375" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429, 38, -3331)
+
+[node name="CityTile376" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 38, -3331)
+
+[node name="CityTile377" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -371, 38, -3331)
+
+[node name="CityTile378" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -771, 38, -3331)
+
+[node name="CityTile379" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1171, 38, -3331)
+
+[node name="CityTile380" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1571, 38, -3331)
+
+[node name="CityTile381" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1971, 38, -3331)
+
+[node name="CityTile382" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2371, 38, -3331)
+
+[node name="CityTile383" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2771, 38, -3331)
+
+[node name="CityTile384" parent="City" instance=ExtResource("1_fo1ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3171, 38, -3331)
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
+mesh = SubResource("PlaneMesh_8bpti")
+skeleton = NodePath("../..")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -238, -44)
+material_override = SubResource("StandardMaterial3D_7hw1t")
+mesh = SubResource("PlaneMesh_7hw1t")
+skeleton = NodePath("../City/CityTile150")
