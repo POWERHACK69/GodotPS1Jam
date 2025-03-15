@@ -66,7 +66,6 @@ size = Vector3(0.613525, 1, 0.631104)
 [node name="Terminal" type="StaticBody3D"]
 script = ExtResource("1_ecvfx")
 mini_game = ExtResource("2_0adxs")
-dev_mode = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)

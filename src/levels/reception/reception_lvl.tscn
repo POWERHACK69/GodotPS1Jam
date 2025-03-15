@@ -404,6 +404,7 @@ omni_range = 23.0
 transform = Transform3D(-1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 2.6, 1.4, 29.8)
 affected_objects = [NodePath("EnvironmentBody")]
 type = "Activate"
+dev_mode = true
 
 [node name="EnvironmentBody" type="AnimatableBody3D" parent="Environment/Interactables/ElevatorTerminal"]
 sync_to_physics = false

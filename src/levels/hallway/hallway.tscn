@@ -326,6 +326,7 @@ top_level = true
 [node name="Terminal" parent="Environment/Interactables" node_paths=PackedStringArray("affected_objects") instance=ExtResource("5_t8g86")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 5, -24)
 affected_objects = [NodePath("TeleportToNextLevel")]
+dev_mode = true
 
 [node name="TeleportToNextLevel" type="AnimatableBody3D" parent="Environment/Interactables/Terminal"]
 script = ExtResource("6_nlr50")
